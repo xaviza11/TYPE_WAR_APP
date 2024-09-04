@@ -10,11 +10,21 @@
       <h5>Language: {{ language }}</h5>
       <h5>Created At: {{ formattedCreatedAt }}</h5>
     </div>
+    <div v-if="isFinish">
+     <FinishTextPanel
+      :seconds="seconds"
+      :pulsations="pulsations"
+      :totalErrors="totalErrors"
+      :pulsationsPerSecond="pulsationsPerSecond"
+    />
+  </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
+import Cookies from 'js-cookie';
+import FinishTextPanel from './FinishTextPanel.vue';
 
 export default defineComponent({
   props: {
@@ -35,6 +45,9 @@ export default defineComponent({
       required: true
     }
   },
+  components: {
+    FinishTextPanel
+  },
   setup(props) {
     const seconds = ref(0);
     const pulsations = ref(0);
@@ -43,9 +56,10 @@ export default defineComponent({
     const timerStarted = ref(false);
     const deadKey = ref(false);
     const totalErrors = ref(0);
+    const isFinish = ref(false)
     let intervalId: number | null = null;
 
-    const mood: string = 'master';
+    const mood: string = Cookies.get('mode');
     const visibleLength = 20;
 
     const startTimer = () => {
@@ -95,6 +109,7 @@ export default defineComponent({
         const newUserInput = userInput.value + event.key;
 
         if (mood === 'master' && props.text[userInput.value.length] !== event.key) {
+          console.log(mood);
           alert('¡Juego terminado! Cometiste un error.');
           resetGame();
           return;
@@ -104,8 +119,9 @@ export default defineComponent({
         pulsations.value += 1;
 
         if (mood === 'normal') {
-          const expectedChar = props.text[userInput.value.length];
+          const expectedChar = props.text[userInput.value.length - 1];
           if (expectedChar !== event.key) {
+            console.log(expectedChar, event.key);
             totalErrors.value += 1;
           }
         }
@@ -113,7 +129,7 @@ export default defineComponent({
         if (newUserInput === props.text) {
           isRunning.value = false;
           stopTimer(); 
-          alert('¡Has ganado!');
+          isFinish.value === true
         }
       }
     };
@@ -180,7 +196,8 @@ export default defineComponent({
       pulsationsPerSecond,
       resetGame,
       title: props.title,
-      formattedCreatedAt
+      formattedCreatedAt,
+      isFinish
     };
   }
 });
