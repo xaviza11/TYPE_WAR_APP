@@ -1,0 +1,15 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@components/*": ["indexers/components/*"],
+        "@store/*": ["indexers/store/*"],
+        "@handlers/*": ["indexers/handlers/*"],
+        "@utils/*": ["indexers/utils/*"],
+        "@composables/*": ["indexers/composables/*"]
+      }
+    },
+    "exclude": ["node_modules", ".nuxt", "dist"]
+}
