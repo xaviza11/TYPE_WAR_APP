@@ -8,16 +8,15 @@
 import Cookies from "js-cookie";
 import { useRuntimeConfig } from "nuxt/app";
 
-export default async function getTexts(type: string, hasLanguage: boolean) {
+export default async function getTexts() {
 
     const runtimeConfig = useRuntimeConfig()
 
     const mode = Cookies.get('mode')
 
-    const url = `${runtimeConfig.public.apiUrl}/completedExercise/getRanking?exerciseMode=${mode}`
+    const url = `${runtimeConfig.public.apiUrl}/completedExercises/getRanking?exerciseMode=${mode}`
 
     try {
-
         const response = await fetch(url, {
             method: 'GET',
             headers: {
