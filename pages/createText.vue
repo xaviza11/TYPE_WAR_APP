@@ -39,6 +39,7 @@
       <button type="submit">Submit</button>
     </form>
     <Alert v-if="errorMessage" :message="errorMessage" @close="clearErrorMessage" />
+    <NavBar></NavBar>
   </div>
 </template>
 
@@ -47,6 +48,7 @@ import { defineComponent, ref } from 'vue';
 import  Alert  from '../components/Alert.vue'; 
 import Cookies from 'js-cookie';
 import postCreateText from '../handlers/texts/postCreateText';
+import NavBar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'CreateText',

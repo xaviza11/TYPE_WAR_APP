@@ -1,6 +1,7 @@
 <template>
-  <div class="home">
+  <div class="TypePage">
     <TypePanel :title="title" :text="text" :language="language" :createdAt="createdAt" />
+    <NavBar></NavBar>
   </div>
 </template>
 
@@ -9,6 +10,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import TypePanel from '../components/TypePanel.vue';
 import getOneText from '../handlers/texts/getTextById';
+import NavBar from '../components/NavBar.vue';
 
 export default defineComponent({
   name: 'TypePage',
@@ -46,7 +48,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.home {
+.TypePage {
   text-align: center;
   margin-top: 50px;
 }

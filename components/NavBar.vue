@@ -14,7 +14,6 @@
           <nav class="nav-links">
             <router-link to="/" class="nav-item">Home</router-link>
             <router-link to="/" class="nav-item">About</router-link>
-            <router-link to="/" class="nav-item">Contact</router-link>
           </nav>
   
           <div class="settings">
@@ -49,7 +48,7 @@
       const username = ref('John Doe');
       const selectedLanguage = ref(Cookies.get('language') || 'en');
       const selectedMode = ref(Cookies.get('mode') || 'normal');
-      const isCollapsed = ref(false);
+      const isCollapsed = ref(true);
   
       const toggleCollapse = () => {
         isCollapsed.value = !isCollapsed.value;

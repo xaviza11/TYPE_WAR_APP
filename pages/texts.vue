@@ -10,6 +10,7 @@
         </li>
       </ul>
     </div>
+    <NavBar></NavBar>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ExerciseList from '../components/ExerciseList.vue';
 import getTexts  from '../handlers/texts/getTexts';
+import NavBar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'ExercisesPage',
