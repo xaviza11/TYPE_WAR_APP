@@ -78,6 +78,7 @@
         const response = await postRegister(email.value, password.value, name.value);
         if (response.success) {
           Cookies.set('userToken', response.data.access_token);
+          Cookies.set('sessionExpirationDate', response.data.expirationDate)
           Cookies.set('userName', response.data.name)
           Cookies.set('userType', response.data.type)
           window.location.href = '/';
