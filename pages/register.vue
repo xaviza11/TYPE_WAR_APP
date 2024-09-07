@@ -79,7 +79,7 @@
         if (response.success) {
           Cookies.set('userToken', response.data.access_token);
           Cookies.set('userName', response.data.name)
-          Cookies.set('type', response.data.type)
+          Cookies.set('userType', response.data.type)
           window.location.href = '/';
         } else {
           errorMessage.value = response.message;

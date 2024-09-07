@@ -8,12 +8,16 @@
   
         <div class="menu-content" v-if="!isCollapsed">
           <div class="user-info">
-            <p>{{ username }}</p>
+            <p>{{ userName || 'Welcome to TypeWar' }} </p>
           </div>
   
           <nav class="nav-links">
             <router-link to="/" class="nav-item">Home</router-link>
-            <router-link to="/" class="nav-item">About</router-link>
+            <router-link to="/exercises" class="nav-item">Exercises</router-link>
+            <router-link to="/texts" class="nav-item">Texts</router-link>
+            <router-link to="/createText" v-if="userName && userType === 'admin'" class="nav-item">Create Texts</router-link>
+            <router-link to="/signin" v-if="!userName" class="nav-item">signin</router-link>
+            <router-link to="/register" v-if="!userName" class="nav-item">register</router-link>
           </nav>
   
           <div class="settings">
@@ -45,15 +49,16 @@
   export default defineComponent({
     name: 'Navbar',
     setup() {
-      const username = ref('John Doe');
+      const userName = ref(Cookies.get('userName'))
+      const userType = ref(Cookies.get('userType'))
+      const hasUser = typeof userName === 'string'
       const selectedLanguage = ref(Cookies.get('language') || 'en');
       const selectedMode = ref(Cookies.get('mode') || 'normal');
       const isCollapsed = ref(true);
-  
       const toggleCollapse = () => {
         isCollapsed.value = !isCollapsed.value;
       };
-  
+
       const changeLanguage = () => {
         Cookies.set('language', selectedLanguage.value, { expires: 7 });
         window.location.reload();
@@ -65,13 +70,15 @@
       };
   
       return {
-        username,
+        userName,
         selectedLanguage,
         selectedMode,
         isCollapsed,
         toggleCollapse,
         changeLanguage,
         changeMode,
+        userType,
+        hasUser
       };
     },
   });
@@ -113,7 +120,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100% - 40px); /* Adjust based on collapse button size */
+    height: calc(100% - 40px); 
   }
   
   .navbar-collapsed {
