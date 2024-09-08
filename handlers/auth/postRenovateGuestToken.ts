@@ -5,12 +5,9 @@
  */
 
 import { useRuntimeConfig } from "nuxt/app";
-import Cookies from 'js-cookie'
 
 export default async function postRenovateGuestToken(guestToken: string) {
     try {
-
-        const guestToken = Cookies.get('guestToken')
 
         const runtimeConfig = useRuntimeConfig()
         const url = `${runtimeConfig.public.apiUrl}/auth/renovateGuestToken`

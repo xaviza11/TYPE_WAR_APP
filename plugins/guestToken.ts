@@ -1,7 +1,7 @@
 import getGuestToken from '../handlers/auth/getGuestToken'
 import postRenovateGuestToken from '../handlers/auth/postRenovateGuestToken'
 import Cookies from 'js-cookie'
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin } from 'nuxt/app'
 
 export default defineNuxtPlugin(async () => {
     try {
