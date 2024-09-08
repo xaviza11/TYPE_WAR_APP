@@ -9,22 +9,18 @@
 import { useRuntimeConfig } from "nuxt/app";
 
 export default async function postRenovateSessionToken(userToken: string, name: string, type: string) {
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/auth/renovateSessionToken`
-
     try {
+
+        const runtimeConfig = useRuntimeConfig();
+        const url = `${runtimeConfig.public.apiUrl}/auth/renovateSessionToken`;
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${userToken}`,
             },
-            body: JSON.stringify({
-                name: name,
-                type: type
-            })
+            body: JSON.stringify({ name, type }),
         });
 
         if (!response.ok) {
