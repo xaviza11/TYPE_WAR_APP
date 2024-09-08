@@ -23,9 +23,8 @@ export default async () => {
         }
 
 
-        if (expiration >= currentDate) {
+        if (expiration <= currentDate) {
             const renewResponse = await postRenovateSessionToken(userToken, name, type)
-
             if (renewResponse.success) {
                 Cookies.set('userToken', renewResponse.data.access_token)
                 Cookies.set('userName', renewResponse.data.name)
