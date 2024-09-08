@@ -1,5 +1,5 @@
 import getGuestToken from '../handlers/auth/getGuestToken'
-import postRenovateGuestToken from '../handlers/auth/postRenovateGestToken'
+import postRenovateGuestToken from '../handlers/auth/postRenovateGuestToken'
 import Cookies from 'js-cookie'
 import { defineNuxtPlugin } from '#app'
 
