@@ -1,35 +1,36 @@
 import postRenovateSessionToken from '../handlers/auth/postRenovateSessionToken'
-import Cookies from "js-cookie"
+import { useCookie } from 'nuxt/app'
+import Cookies from 'js-cookie'
+import { defineNuxtPlugin } from 'nuxt/app'
 
-export default async () => {
+export default defineNuxtPlugin(async () => {
     try {
-        const userToken = Cookies.get('userToken') 
-        const sessionExpirationDate = Cookies.get('sessionExpirationDate') 
+        const userToken = useCookie('userToken')
+        const sessionExpirationDate = useCookie('sessionExpirationDate')
 
-        if (!userToken || !sessionExpirationDate) {
-            console.error('Needs to signin or signup for retrieve the session token')
+        if (!userToken.value || !sessionExpirationDate.value) {
+            console.error('Needs to signin or signup to retrieve the session token')
             return
         }
 
         const currentDate = new Date()
-        const expiration = new Date(sessionExpirationDate)
+        const expiration = new Date(sessionExpirationDate.value)
 
-        const name = Cookies.get('userName')
-        const type = Cookies.get('userType')
+        const name = useCookie('userName')
+        const type = useCookie('userType')
 
-        if(!name || !type){
-            console.error('Needs to signin or signup for retrieve the session token')
+        if (!name.value || !type.value) {
+            console.error('Needs to signin or signup to retrieve the session token')
             return
         }
 
-
         if (expiration <= currentDate) {
-            const renewResponse = await postRenovateSessionToken(userToken, name, type)
+            const renewResponse = await postRenovateSessionToken(userToken.value, name.value, type.value)
             if (renewResponse.success) {
-                Cookies.set('userToken', renewResponse.data.access_token)
-                Cookies.set('userName', renewResponse.data.name)
-                Cookies.set('userType', renewResponse.data.type)
-                Cookies.set('sessionExpirationDate', renewResponse.data.expirationDate)
+                useCookie('userToken').value = renewResponse.data.access_token
+                useCookie('userName').value = renewResponse.data.name
+                useCookie('userType').value = renewResponse.data.type
+                useCookie('sessionExpirationDate').value = renewResponse.data.expirationDate
                 console.log('Session token renewed successfully')
             } else {
                 console.error('Error renewing session token:', renewResponse.message)
@@ -40,4 +41,4 @@ export default async () => {
     } catch (error) {
         console.error('General error in the session token plugin:', error)
     }
-}
+})
