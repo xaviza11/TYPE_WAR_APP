@@ -8,14 +8,13 @@
 
 import { IS_VALID_EMAIL, IS_VALID_NAME, IS_VALID_PASSWORD } from '@utils/index';
 import { useRuntimeConfig } from 'nuxt/app';
+import Cookies from 'js-cookie'
 
 export default async function postRegister(email: string, password: string, name: string) {
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/users`
-
     try {
+
+        const runtimeConfig = useRuntimeConfig()
+        const url = `${runtimeConfig.public.apiUrl}/users`
 
         const isValidEmail = IS_VALID_EMAIL(email)
         const isValidPassword = IS_VALID_PASSWORD(password)
@@ -23,11 +22,13 @@ export default async function postRegister(email: string, password: string, name
         if (!isValidEmail) return { success: false, message: 'invalid email' }
         if (!isValidPassword) return { success: false, message: 'invalid password' }
         if (!isValidName) return { success: false, message: 'invalid email' }
+        const guestToken = Cookies.get('guestToken')
 
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${guestToken}`
             },
             body: JSON.stringify({ email, password, name }),
         });

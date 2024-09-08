@@ -7,16 +7,18 @@ import Cookies from "js-cookie";
 import { useRuntimeConfig } from "nuxt/app";
 
 export default async function completedExercises() {
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/completedExercises`
-
     try {
+
+        const runtimeConfig = useRuntimeConfig()
+        const url = `${runtimeConfig.public.apiUrl}/completedExercises`
+
+        const userToken = Cookies.get('userToken')
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userToken}`,
             },
         });
 

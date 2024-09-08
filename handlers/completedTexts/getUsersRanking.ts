@@ -7,18 +7,18 @@ import Cookies from "js-cookie";
 import { useRuntimeConfig } from "nuxt/app";
 
 export default async function getUsersRanking() {
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const mode = Cookies.get('mode')
-
-    const url = `${runtimeConfig.public.apiUrl}/completedExercises/getRanking?exerciseMode=${mode}`
-
     try {
+
+        const runtimeConfig = useRuntimeConfig()
+        const mode = Cookies.get('mode')
+        const url = `${runtimeConfig.public.apiUrl}/completedExercises/getRanking?exerciseMode=${mode}`
+        const guestToken = Cookies.get('guestToken')
+
         const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${guestToken}`,
             },
         });
 

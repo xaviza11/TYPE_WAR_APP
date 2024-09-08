@@ -5,20 +5,20 @@
  */
 
 import { useRuntimeConfig } from "nuxt/app";
+import Cookies from 'js-cookie'
 
 export default async function getOneText(id: string) {
-
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/texts/findOne/${id}`
-
     try {
+
+        const runtimeConfig = useRuntimeConfig()
+        const url = `${runtimeConfig.public.apiUrl}/texts/findOne/${id}`
+        const guestToken = Cookies.get('guestToken')
 
         const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${guestToken}`
             },
         });
 

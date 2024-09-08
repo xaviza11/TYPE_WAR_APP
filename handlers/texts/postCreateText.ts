@@ -12,17 +12,14 @@ import Cookies from 'js-cookie';
 import { useRuntimeConfig } from 'nuxt/app';
 
 export default async function postCreateText(title: string, text: string, type: string, language: string) {
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/texts`
-
     try {
+        const runtimeConfig = useRuntimeConfig()
+        const url = `${runtimeConfig.public.apiUrl}/texts`
         const userToken = Cookies.get('userToken')
         const truncateText = TRUNCATE_TEXT(text)
         const userName = Cookies.get('userName')
 
-        if(!userToken) return {success: false, message: 'please signin'}
+        if (!userToken) return { success: false, message: 'please signin' }
 
         const response = await fetch(url, {
             method: 'POST',
@@ -30,7 +27,7 @@ export default async function postCreateText(title: string, text: string, type: 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${userToken}`,
             },
-            body: JSON.stringify({ title, name: userName, text: truncateText, type, language}),
+            body: JSON.stringify({ title, name: userName, text: truncateText, type, language }),
         });
 
         if (!response.ok) {

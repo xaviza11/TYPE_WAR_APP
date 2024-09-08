@@ -9,21 +9,21 @@ import Cookies from "js-cookie";
 import { useRuntimeConfig } from "nuxt/app";
 
 export default async function getTexts(type: string, hasLanguage: boolean) {
-
-    let language = 'all'
-    if(hasLanguage) language = Cookies.get('language') || 'all'
-
-    const runtimeConfig = useRuntimeConfig()
-
-    const url = `${runtimeConfig.public.apiUrl}/texts/?type=${type}&language=${language}`
-
     try {
+        let language = 'all';
+        if (hasLanguage) language = Cookies.get('language') || 'all';
+
+        const runtimeConfig = useRuntimeConfig();
+        const url = `${runtimeConfig.public.apiUrl}/texts/?type=${type}&language=${language}`;
+        const guestToken = Cookies.get('guestToken');
+
+        const headers: Record<string, string> = {'Content-Type': 'application/json'};
+
+        if (guestToken) headers['Authorization'] = `Bearer ${guestToken}`;
 
         const response = await fetch(url, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: headers,
         });
 
         if (!response.ok) {
