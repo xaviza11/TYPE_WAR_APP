@@ -29,7 +29,7 @@
         required: true
       },
       pulsationsPerSecond: {
-        type: [Number, String], // It could be Number or String
+        type: [Number, String], 
         required: true
       }
     },

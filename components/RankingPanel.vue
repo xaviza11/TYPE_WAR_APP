@@ -34,7 +34,7 @@
   
   <script>
   import { defineComponent, ref, computed, onMounted } from '@vue/composition-api';
-  import getRankings from '../handlers/completedTexts/getRanking'; 
+  import getUsersRanking from '../handlers/completedTexts/getUsersRanking'; 
   import Cookies from 'js-cookie'
   
   export default defineComponent({
@@ -86,7 +86,7 @@
       };
   
       const loadRankings = async () => {
-        const result = await getRankings();
+        const result = await getUsersRanking();
         rankings.value = result.data;
         updatePageToUserPosition();
       };

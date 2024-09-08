@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <div v-if="!isFinish">
     <h1>{{ title }}</h1>
     <h5>Segundos: {{ seconds }}</h5>
     <h5>Pulsaciones: {{ pulsations }}</h5>
@@ -10,6 +11,7 @@
       <h5>Language: {{ language }}</h5>
       <h5>Created At: {{ formattedCreatedAt }}</h5>
     </div>
+  </div>
     <div v-if="isFinish">
      <FinishTextPanel
       :seconds="seconds"
@@ -109,7 +111,6 @@ export default defineComponent({
         const newUserInput = userInput.value + event.key;
 
         if (mood === 'master' && props.text[userInput.value.length] !== event.key) {
-          console.log(mood);
           alert('¡Juego terminado! Cometiste un error.');
           resetGame();
           return;
@@ -121,15 +122,16 @@ export default defineComponent({
         if (mood === 'normal') {
           const expectedChar = props.text[userInput.value.length - 1];
           if (expectedChar !== event.key) {
-            console.log(expectedChar, event.key);
             totalErrors.value += 1;
           }
         }
 
-        if (newUserInput === props.text) {
+        if (newUserInput.trim() === props.text.trim()) {
+          console.log('work')
+          alert('you win')
           isRunning.value = false;
           stopTimer(); 
-          isFinish.value === true
+          isFinish.value = true
         }
       }
     };
