@@ -1,8 +1,8 @@
 /**
  * Function to perform a POST request to /auth and handle errors.
- * @param {string} email - The user's email.
- * @param {string} password - The user's password.
- * @returns {Promise<Object>} - The server response or an error message.
+ * @param {string} type - The type of text ==> master || normal
+ * @param {string} hasLanguage - Boolean for define if need send the language
+ * @returns {Promise<Object>} - The server response array of texts or error
  */
 
 import Cookies from "js-cookie";

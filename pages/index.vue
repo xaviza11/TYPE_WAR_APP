@@ -10,7 +10,7 @@
 import { defineComponent, onMounted } from 'vue';
 import AutoType from '../components/AutoType.vue';
 import NavBar from '../components/NavBar.vue';
-import getRanking from '../handlers/completedTexts/getRanking';
+import getUsersRanking from '../handlers/completedTexts/getUsersRanking';
 import RankingPanel from '../components/RankingPanel.vue';
 
 export default defineComponent({
@@ -22,7 +22,7 @@ export default defineComponent({
   setup() {
     onMounted(async () => {
       try {
-        const ranking = await getRanking();
+        const ranking = await getUsersRanking();
         console.log(ranking);
       } catch (error) {
         console.error('Error fetching ranking:', error);

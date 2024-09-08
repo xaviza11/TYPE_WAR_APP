@@ -2,7 +2,7 @@
  * Function to perform a POST request to /auth and handle errors.
  * @param {string} email - The user's email.
  * @param {string} password - The user's password.
- * @returns {Promise<Object>} - The server response or an error message.
+ * @returns {Promise<{access_token: CancelToken, name: userName as string, type: userType as string, expirationDate: expiration date as ISOString}>} - The server response or an error message.
  */
 
 import { IS_VALID_PASSWORD, IS_VALID_EMAIL } from "@utils/index";

@@ -1,7 +1,9 @@
 /**
  * Function to perform a POST request to /auth and handle errors.
- * @param {string} email - The user's email.
- * @param {string} password - The user's password.
+ * @param {string} title - The title of the text
+ * @param {string} text -  The text of the document
+ * @param {string}type - The type of text text || exercise
+ * @param {string}language - The language of the text
  * @returns {Promise<Object>} - The server response or an error message.
  */
 

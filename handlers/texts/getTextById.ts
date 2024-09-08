@@ -1,7 +1,7 @@
 /**
  * Function to perform a POST request to /auth and handle errors.
  * @param {string} id - The id of the text
- * @returns {Promise<Object>} - The server response or an error message.
+ * @returns {Promise<Object>} - The server response text or error
  */
 
 import { useRuntimeConfig } from "nuxt/app";

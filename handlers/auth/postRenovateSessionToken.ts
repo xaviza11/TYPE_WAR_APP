@@ -3,12 +3,12 @@
  * @param userToken - The token of the user
  * @param name - The name of the user
  * @param type - The type of the session or user
- * @returns {Promise<Object>} - The server response or an error message.
+ * @returns {Promise<{ access_token: token as string, name: userName as string, type: userType as string, expirationDate: expirationDate as ISOString }>} - The server response or an error message.
  */
 
 import { useRuntimeConfig } from "nuxt/app";
 
-export default async function postRenovateGuestToken(userToken: string, name: string, type: string) {
+export default async function postRenovateSessionToken(userToken: string, name: string, type: string) {
 
     const runtimeConfig = useRuntimeConfig()
 

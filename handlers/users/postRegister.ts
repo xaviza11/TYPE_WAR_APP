@@ -2,6 +2,7 @@
  * Function to perform a POST request to /auth and handle errors.
  * @param {string} email - The user's email.
  * @param {string} password - The user's password.
+ * @param {string} name - The name of the user
  * @returns {Promise<Object>} - The server response or an error message.
  */
 

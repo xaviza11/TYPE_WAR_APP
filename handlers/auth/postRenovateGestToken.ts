@@ -1,7 +1,7 @@
 /**
  * Function to perform a POST request to /auth and handle errors.
  * @param guestToken - The token of the guest
- * @returns {Promise<Object>} - The server response or an error message.
+ * @returns {Promise<{ access_token: token as string, expirationDate: expirationDate as ISOString() }>} - The server response or an error message.
  */
 
 import { useRuntimeConfig } from "nuxt/app";

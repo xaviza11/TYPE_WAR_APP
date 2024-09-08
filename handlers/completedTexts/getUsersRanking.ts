@@ -1,14 +1,12 @@
 /**
  * Function to perform a POST request to /auth and handle errors.
- * @param {string} email - The user's email.
- * @param {string} password - The user's password.
- * @returns {Promise<Object>} - The server response or an error message.
+ * @returns {Promise<Object>} - The server response sorted array of users ranking or error
  */
 
 import Cookies from "js-cookie";
 import { useRuntimeConfig } from "nuxt/app";
 
-export default async function getTexts() {
+export default async function getUsersRanking() {
 
     const runtimeConfig = useRuntimeConfig()
 
