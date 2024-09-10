@@ -113,8 +113,19 @@ export const translations = {
       "italian": "Italiano",
       "german": "Alemán",
       "americanEnglish": "Inglés (Americano)"
+    },
+    "cookieComponent": {
+      "text": "  Este sitio web utiliza cookies mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra ",
+      "text2": "política de privacidad",
+      "accept": "Aceptar"
     }
   },
+
+
+
+
+
+
   "en-UK": {
     "navbar": {
       "language": "Language: ",
@@ -229,8 +240,19 @@ export const translations = {
       "italian": "Italian",
       "german": "German",
       "americanEnglish": "(American) English"
+    },
+    "cookieComponent": {
+      "text": "This website uses cookies to enhance the user experience. By continuing to browse, you agree to our ",
+      "text2": "privacy policy",
+      "accept": "Accept"
     }
   },
+
+
+
+
+
+
   "en-US": {
     "navbar": {
       "language": "Language: ",
@@ -345,8 +367,19 @@ export const translations = {
       "italian": "Italian",
       "german": "German",
       "americanEnglish": "(American) English"
+    },
+    "cookieComponent": {
+      "text": "This website uses cookies to improve user experience. By continuing to browse, you accept our ",
+      "text2": "privacy policy",
+      "accept": "Accept"
     }
   },
+
+
+
+
+
+
   "fr-FR": {
     "navbar": {
       "language": "Langue : ",
@@ -461,8 +494,19 @@ export const translations = {
       "italian": "Italien",
       "german": "Allemand",
       "americanEnglish": "Anglais (Américain)"
+    },
+    "cookieComponent": {
+      "text": "Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant à naviguer, vous acceptez notre ",
+      "text2": "politique de confidentialité",
+      "accept": "Accepter"
     }
   },
+
+
+
+
+
+
   "it-IT": {
     "navbar": {
       "language": "Lingua: ",
@@ -577,8 +621,19 @@ export const translations = {
       "italian": "Italiano",
       "german": "Tedesco",
       "americanEnglish": "Inglese (Americano)"
+    },
+    "cookieComponent": {
+      "text": "Questo sito web utilizza i cookie per migliorare l'esperienza dell'utente. Continuando a navigare, accetti la nostra ",
+      "text2": "politica sulla privacy",
+      "accept": "Accetta"
     }
   },
+
+
+
+
+
+  
   "de-DE": {
     "navbar": {
       "language": "Sprache: ",
@@ -693,6 +748,11 @@ export const translations = {
       "italian": "Italienisch",
       "german": "Deutsch",
       "americanEnglish": "(Amerikanisches) Englisch"
+    },
+    "cookieComponent": {
+      "text": "Diese Website verwendet Cookies, um das Benutzererlebnis zu verbessern. Durch die weitere Nutzung der Website stimmen Sie unserer ",
+      "text2": "Datenschutzrichtlinie",
+      "accept": "Akzeptieren"
     }
   }
 }
