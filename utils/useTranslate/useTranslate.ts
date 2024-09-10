@@ -23,14 +23,8 @@ export const useTranslate = () => {
     return translation || `Missing translation: ${key}`; 
   };
 
-  const setLocale = (locale: Locale) => {
-    currentLocale.value = locale;
-    Cookies.set('language', locale, { expires: 365 * 100 });
-  };
-
   return {
     t,
-    setLocale,
     currentLocale
   };
 };
