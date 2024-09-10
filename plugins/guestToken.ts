@@ -12,8 +12,8 @@ export default defineNuxtPlugin(async () => {
             const response = await getGuestToken()
 
             if (response.success) {
-                Cookies.set('guestToken', response.data.access_token)
-                Cookies.set('expirationDate', response.data.expirationDate)
+                Cookies.set('guestToken', response.data.access_token, {expires: 7})
+                Cookies.set('expirationDate', response.data.expirationDate, {expires: 7})
             } else {
                 console.error('Error obtaining guest token:', response.message)
             }
@@ -25,8 +25,8 @@ export default defineNuxtPlugin(async () => {
                 const renewResponse = await postRenovateGuestToken(guestToken)
 
                 if (renewResponse.success) {
-                    Cookies.set('guestToken', renewResponse.data.access_token)
-                    Cookies.set('expirationDate', renewResponse.data.expirationDate)
+                    Cookies.set('guestToken', renewResponse.data.access_token, {expires: 7})
+                    Cookies.set('expirationDate', renewResponse.data.expirationDate, {expires: 7})
                     console.log('Guest token renewed successfully')
                 } else {
                     console.error('Error renewing guest token:', renewResponse.message)
