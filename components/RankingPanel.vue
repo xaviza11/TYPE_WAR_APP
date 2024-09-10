@@ -3,11 +3,11 @@
       <table id="ranking-table">
         <thead>
           <tr>
-            <th>Index</th>
-            <th>Name <button @click="sortTable('name')">Sort</button></th>
-            <th>PPS Avg <button @click="sortTable('ppsAvg')">Sort</button></th>
-            <th>Error Avg <button @click="sortTable('errorAvg')">Sort</button></th>
-            <th>Duration Avg <button @click="sortTable('durationAvg')">Sort</button></th>
+            <th>{{ t('rankingPanel.index') }}</th>
+            <th>{{ t('rankingPanel.name') }}<button @click="sortTable('name')">{{ t('rankingPanel.sort') }}</button></th>
+            <th>{{ t('rankingPanel.ppsAvg') }}<button @click="sortTable('ppsAvg')">{{ t('rankingPanel.sort') }}</button></th>
+            <th>{{ t('rankingPanel.ppsAvg') }}<button @click="sortTable('errorAvg')">{{ t('rankingPanel.sort') }}</button></th>
+            <th>{{ t('rankingPanel.durationAvg') }}<button @click="sortTable('durationAvg')">{{ t('rankingPanel.sort') }}</button></th>
           </tr>
         </thead>
         <tbody id="ranking-body">
@@ -25,9 +25,9 @@
         </tbody>
       </table>
       <div id="pagination-controls">
-        <button id="prev-page" @click="prevPage" :disabled="currentPage === 1">Previous</button>
-        <span id="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
-        <button id="next-page" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+        <button id="prev-page" @click="prevPage" :disabled="currentPage === 1">{{ t('rankingPanel.previous') }}</button>
+        <span id="page-info">{{ t('rankingPanel.page') }} {{ currentPage }} {{ t('rankingPanel.of') }} {{ totalPages }}</span>
+        <button id="next-page" @click="nextPage" :disabled="currentPage === totalPages">{{ t('rankingPanel.next') }}</button>
       </div>
     </div>
   </template>
@@ -36,9 +36,13 @@
   import { defineComponent, ref, computed, onMounted } from '@vue/composition-api';
   import getUsersRanking from '../handlers/completedTexts/getUsersRanking'; 
   import Cookies from 'js-cookie'
+  import { useTranslate } from '../utils/useTranslate/useTranslate';
   
   export default defineComponent({
     setup() {
+
+      const {t} = useTranslate()
+
       const currentPage = ref(1);
       const itemsPerPage = 10;
       const rankings = ref([]);
@@ -127,6 +131,7 @@
         nextPage,
         sortTable,
         name,
+        t
       };
     },
   });

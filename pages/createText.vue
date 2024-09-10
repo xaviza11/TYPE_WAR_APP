@@ -1,9 +1,9 @@
 <template>
   <div class="create-text">
-    <h2>Create Text</h2>
+    <h2>{{ t('createTextPage.createText') }}</h2>
     <form @submit.prevent="handleCreateText">
       <div>
-        <label for="language">Title:</label>
+        <label for="language">{{ t('createTextPage.title') }}</label>
         <input
           type="text"
           id="title"
@@ -12,7 +12,7 @@
         />
       </div>
       <div>
-        <label for="text">Text:</label>
+        <label for="text">{{ t('createTextPage.text') }}</label>
         <textarea
           id="text"
           v-model="text"
@@ -21,14 +21,14 @@
         ></textarea>
       </div>
       <div>
-        <label for="type">Type:</label>
+        <label for="type">{{ t('createTextPage.type') }}</label>
         <select id="type" v-model="type" required>
-          <option value="exercise">Exercise</option>
-          <option value="text">Text</option>
+          <option value="exercise">{{ t('createTextPage.exerciseOption') }}</option>
+          <option value="text">{{ t('createTextPage.textOption') }}</option>
         </select>
       </div>
       <div>
-        <label for="language">Language:</label>
+        <label for="language">{{ t('createTextPage.language') }}</label>
         <input
           type="text"
           id="language"
@@ -36,7 +36,7 @@
           required
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">{{ t('createTextPage.submit') }}</button>
     </form>
     <Alert v-if="errorMessage" :message="errorMessage" @close="clearErrorMessage" />
     <NavBar></NavBar>
@@ -46,9 +46,9 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import  Alert  from '../components/Alert.vue'; 
-import Cookies from 'js-cookie';
 import postCreateText from '../handlers/texts/postCreateText';
 import NavBar from '../components/NavBar.vue'
+import { useTranslate } from '../utils/useTranslate/useTranslate';
 
 export default defineComponent({
   name: 'CreateText',
@@ -56,6 +56,7 @@ export default defineComponent({
     Alert,
   },
   setup() {
+    const {t} = useTranslate()
     const title = ref('')
     const text = ref('');
     const type = ref('text');
@@ -96,6 +97,7 @@ export default defineComponent({
       handleCreateText,
       errorMessage,
       clearErrorMessage,
+      t
     };
   }
 });

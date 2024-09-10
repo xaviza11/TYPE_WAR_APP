@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@unhead/vue": "^1.11.2",
     "js-cookie": "^3.0.5",
     "nuxt": "^3.13.0",
     "vue": "latest"

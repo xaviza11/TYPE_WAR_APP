@@ -2,14 +2,14 @@
   <div class="app">
     <div v-if="!isFinish">
     <h1>{{ title }}</h1>
-    <h5>Segundos: {{ seconds }}</h5>
-    <h5>Pulsaciones: {{ pulsations }}</h5>
-    <h5 v-if="mood === 'normal'">Total errores: {{ totalErrors }}</h5>
-    <h5>Pulsaciones por segundo: {{ pulsationsPerSecond }}</h5>
+    <h5>{{ t('typePanel.seconds') }} {{ seconds }}</h5>
+    <h5>{{ t('typePanel.pulsations') }} {{ pulsations }}</h5>
+    <h5 v-if="mood === 'normal'">{{ t('typePanel.totalErrors') }} {{ totalErrors }}</h5>
+    <h5>{{ t('typePanel.pps') }} {{ pulsationsPerSecond }}</h5>
     <h2 v-html="renderText()"></h2>
     <div class="additional-info">
-      <h5>Language: {{ language }}</h5>
-      <h5>Created At: {{ formattedCreatedAt }}</h5>
+      <h5>{{ t('typePanel.language') }} {{ language }}</h5>
+      <h5>{{ t('typePanel.createdAt') }} {{ formattedCreatedAt }}</h5>
     </div>
   </div>
     <div v-if="isFinish">
@@ -27,6 +27,7 @@
 import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
 import Cookies from 'js-cookie';
 import FinishTextPanel from './FinishTextPanel.vue';
+import { useTranslate } from '../utils/useTranslate/useTranslate';
 
 export default defineComponent({
   props: {
@@ -51,6 +52,9 @@ export default defineComponent({
     FinishTextPanel
   },
   setup(props) {
+
+    const {t} = useTranslate()
+
     const seconds = ref(0);
     const pulsations = ref(0);
     const userInput = ref('');
@@ -61,7 +65,7 @@ export default defineComponent({
     const isFinish = ref(false)
     let intervalId: number | null = null;
 
-    const mood: string = Cookies.get('mode');
+    const mood: string = Cookies.get('mode') || 'normal'
     const visibleLength = 20;
 
     const startTimer = () => {
@@ -199,7 +203,8 @@ export default defineComponent({
       resetGame,
       title: props.title,
       formattedCreatedAt,
-      isFinish
+      isFinish,
+      t
     };
   }
 });

@@ -1,18 +1,19 @@
 <template>
     <div class="overlay">
       <div class="info-box">
-        <h3>Statistics</h3>
-        <p>Time: {{ formattedTime }}</p>
-        <p>Pulsations: {{ pulsations }}</p>
-        <p>Total Errors: {{ totalErrors }}</p>
-        <p>Pulsations Per Second: {{ pulsationsPerSecond }}</p>
-        <p>Errors Per Second: {{ errorsPerSecond }}</p>
+        <h3>{{ t('finishTextPanel.stats') }}</h3>
+        <p>{{ t('finishTextPanel.time') }} {{ formattedTime }}</p>
+        <p>{{ t('finishTextPanel.pulsations') }} {{ pulsations }}</p>
+        <p>{{ t('finishTextPanel.totalErrors') }} {{ totalErrors }}</p>
+        <p>{{ t('finishTextPanel.pulsationsPerSecond') }} {{ pulsationsPerSecond }}</p>
+        <p>{{ t('finishTextPanel.errorsPerSecond') }} {{ errorsPerSecond }}</p>
       </div>
     </div>
   </template>
   
   <script lang="ts">
   import { defineComponent, computed } from 'vue';
+  import { useTranslate } from '../utils/useTranslate/useTranslate';
   
   export default defineComponent({
     props: {
@@ -34,6 +35,9 @@
       }
     },
     setup(props) {
+
+      const {t} = useTranslate()
+
       const formattedTime = computed(() => {
         const minutes = Math.floor(props.seconds / 60);
         const seconds = props.seconds % 60;
@@ -46,7 +50,8 @@
   
       return {
         formattedTime,
-        errorsPerSecond
+        errorsPerSecond,
+        t
       };
     }
   });

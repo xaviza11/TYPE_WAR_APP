@@ -4,11 +4,7 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "@components/*": ["indexers/components/*"],
-        "@store/*": ["indexers/store/*"],
-        "@handlers/*": ["indexers/handlers/*"],
-        "@utils/*": ["indexers/utils/*"],
-        "@composables/*": ["indexers/composables/*"]
+        "@components/*": ["components/*"],
       }
     },
     "exclude": ["node_modules", ".nuxt", "dist"]

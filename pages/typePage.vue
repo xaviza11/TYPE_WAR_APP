@@ -11,6 +11,8 @@ import { useRoute } from 'vue-router';
 import TypePanel from '../components/TypePanel.vue';
 import getOneText from '../handlers/texts/getTextById';
 import NavBar from '../components/NavBar.vue';
+import { useTranslate } from '../utils/useTranslate/useTranslate'
+import { useHead } from '@unhead/vue'
 
 export default defineComponent({
   name: 'TypePage',
@@ -18,6 +20,27 @@ export default defineComponent({
     TypePanel
   },
   setup() {
+
+    const { t } = useTranslate()
+
+    useHead({
+      title: t('homePage.title'),
+      meta: [
+        {
+          name: 'description',
+          content: t('homePage.description')
+        },
+        {
+          property: 'og:title',
+          content: t('homePage.ogTitle')
+        },
+        {
+          property: 'og:description',
+          content: t('homePage.ogDescription')
+        }
+      ]
+    });
+
     const route = useRoute();
     const title = ref('');
     const text = ref('');

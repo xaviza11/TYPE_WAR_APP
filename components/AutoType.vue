@@ -1,23 +1,30 @@
 <template>
     <div class="auto-typing">
-      <h5>Segundos: {{ seconds }}</h5>
-      <h5>Pulsaciones: {{ pulsations }}</h5>
-      <h5>Total errores: {{ totalErrors }}</h5>
-      <h5>PPS: {{ pps }}</h5>
+      <h5>{{ t('autoType.seconds') }} {{ seconds }}</h5>
+      <h5>{{ t('autoType.pulsations') }}: {{ pulsations }}</h5>
+      <h5>{{ t('autoType.totalErrors') }} {{ totalErrors }}</h5>
+      <h5>{{ t('autoType.pps')  }} {{ pps }}</h5>
       <h2 v-html="renderText()"></h2>
     </div>
   </template>
   
   <script lang="ts">
   import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
+  import { useTranslate } from '../utils/useTranslate/useTranslate';
   
   export default defineComponent({
     name: 'AutoTyping',
     setup() {
+      const {t} = useTranslate()
+
+      const txt1 = t('texts.t1')
+      const txt2 = t('texts.t2')
+      const txt3 = t('texts.t3')
+
       const texts = [
-        `La mecanografía (comúnmente escrito como mecanografia) es el proceso de escribir con todos los dedos sin mirar el teclado.`,
-        `Es una manera rápida y eficiente de escribir.`,
-        `AgileFingers es un curso online gratuito de mecanografía que te enseña a dominar esta técnica.`,
+        txt1,
+        txt2,
+        txt3
       ];
   
       const visibleLength = 20;
@@ -96,7 +103,7 @@
       };
   
       const pps = computed(() => {
-        return seconds.value > 0 ? ((pulsations.value / seconds.value) * 60).toFixed(2) : '0';
+        return seconds.value > 0 ? ((pulsations.value / seconds.value)).toFixed(2) : '0';
       });
   
       return {
@@ -104,7 +111,8 @@
         pulsations,
         totalErrors,
         pps,
-        renderText
+        renderText,
+        t
       };
     }
   });

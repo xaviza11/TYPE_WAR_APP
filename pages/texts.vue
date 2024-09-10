@@ -1,7 +1,7 @@
 <template>
   <div class="exercises-page">
     <div v-if="exerciseList.length === 0">
-      Loading exercises...
+      {{ t('textsPage.loadingExercises') }}
     </div>
     <div v-else>
       <ul>
@@ -20,6 +20,8 @@ import { useRouter } from 'vue-router';
 import ExerciseList from '../components/ExerciseList.vue';
 import getTexts  from '../handlers/texts/getTexts';
 import NavBar from '../components/NavBar.vue'
+import { useTranslate } from '../utils/useTranslate/useTranslate';
+import { useHead } from '@unhead/vue'
 
 export default defineComponent({
   name: 'ExercisesPage',
@@ -29,6 +31,25 @@ export default defineComponent({
   setup() {
     const router = useRouter(); 
     const exerciseList = ref<Array<{ _id: string; title: string }>>([]);
+    const {t} = useTranslate()
+
+    useHead({
+      title: t('textsPage.title'),
+      meta: [
+        {
+          name: 'description',
+          content: t('textsPage.description')
+        },
+        {
+          property: 'og:title',
+          content: t('textsPage.ogTitle')
+        },
+        {
+          property: 'og:description',
+          content: t('textsPage.OgDescription')
+        }
+      ]
+    })
 
     const getTextHandle = async () => {
       const response = await getTexts('text', true);
@@ -47,7 +68,8 @@ export default defineComponent({
 
     return {
       exerciseList,
-      navigateTypePage
+      navigateTypePage,
+      t
     };
   },
 });

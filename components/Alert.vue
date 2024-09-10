@@ -1,41 +1,49 @@
 <template>
-    <div class="alert">
-      {{ message }}
-      <button @click="dismissAlert">OK</button>
-    </div>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from 'vue';
-  
-  export default defineComponent({
-    name: 'Alert',
-    props: {
-      message: {
-        type: String as any,
-        required: true,
-      },
+  <div class="alert">
+    {{ message }}
+    <button @click="dismissAlert">{{ t('alert.ok') }}</button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, onMounted, ref } from 'vue';
+import { useTranslate } from '../utils/useTranslate/useTranslate';
+
+export default defineComponent({
+  name: 'Alert',
+  props: {
+    message: {
+      type: String as any,
+      required: true,
     },
-    methods: {
-      dismissAlert() {
-        this.$emit('close');
-      }
-    },
-    mounted() {
+  },
+  setup(props, { emit }) {
+    const { t } = useTranslate(); 
+
+    const dismissAlert = () => {
+      emit('close'); 
+    };
+
+    onMounted(() => {
       setTimeout(() => {
-        this.dismissAlert();
+        dismissAlert();
       }, 5000); 
-    }
-  });
-  </script>
-  
-  <style scoped>
-  .alert {
-    color: red;
-    font-weight: bold;
-  }
-  button {
-    margin-left: 10px;
-  }
-  </style>
-  
+    });
+
+    return {
+      t,
+      dismissAlert,
+    };
+  },
+});
+</script>
+
+<style scoped>
+.alert {
+  color: red;
+  font-weight: bold;
+}
+button {
+  margin-left: 10px;
+}
+</style>
