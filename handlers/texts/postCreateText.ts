@@ -7,7 +7,7 @@
  * @returns {Promise<Object>} - The server response or an error message.
  */
 
-import { TRUNCATE_TEXT } from '@utils/index';
+import { TRUNCATE_TEXT } from '../../utils/text/truncateText';
 import Cookies from 'js-cookie';
 import { useRuntimeConfig } from 'nuxt/app';
 

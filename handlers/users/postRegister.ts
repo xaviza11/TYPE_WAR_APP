@@ -6,7 +6,7 @@
  * @returns {Promise<Object>} - The server response or an error message.
  */
 
-import { IS_VALID_EMAIL, IS_VALID_NAME, IS_VALID_PASSWORD } from '@utils/index';
+import { IS_VALID_EMAIL, IS_VALID_NAME, IS_VALID_PASSWORD } from '../../utils/validators/usersRegex';
 import { useRuntimeConfig } from 'nuxt/app';
 import Cookies from 'js-cookie'
 

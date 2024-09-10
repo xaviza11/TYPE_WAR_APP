@@ -5,7 +5,7 @@
  * @returns {Promise<{access_token: CancelToken, name: userName as string, type: userType as string, expirationDate: expiration date as ISOString}>} - The server response or an error message.
  */
 
-import { IS_VALID_PASSWORD, IS_VALID_EMAIL } from "@utils/index";
+import { IS_VALID_PASSWORD, IS_VALID_EMAIL } from "../../utils/validators/usersRegex";
 import { useRuntimeConfig } from "nuxt/app";
 import Cookies from 'js-cookie';
 
