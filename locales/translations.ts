@@ -97,7 +97,8 @@ export const translations = {
       "exerciseOption": "Ejercicio",
       "textOption": "Texto",
       "language": "Idioma: ",
-      "submit": "Enviar"
+      "submit": "Enviar",
+      "accessDenied": "Acceso denegado"
     },
     "homePage": {
       "title": "Página de inicio",
@@ -212,7 +213,8 @@ export const translations = {
       "exerciseOption": "Exercise",
       "textOption": "Text",
       "language": "Language: ",
-      "submit": "Submit"
+      "submit": "Submit",
+      "accessDenied": "Access denied"
     },
     "homePage": {
       "title": "Home Page",
@@ -327,7 +329,8 @@ export const translations = {
       "exerciseOption": "Exercise",
       "textOption": "Text",
       "language": "Language: ",
-      "submit": "Submit"
+      "submit": "Submit",
+      "accessDenied": "Access denied"
     },
     "homePage": {
       "title": "Home Page",
@@ -356,7 +359,7 @@ export const translations = {
       "signin": "Connexion",
       "register": "S'inscrire",
       "createText": "Créer un texte",
-      "welcome": "Bienvenue"
+      "welcome": "Bienvenue",
     },
     "alert": {
       "ok": "OK"
@@ -442,7 +445,8 @@ export const translations = {
       "exerciseOption": "Exercice",
       "textOption": "Texte",
       "language": "Langue : ",
-      "submit": "Envoyer"
+      "submit": "Envoyer",
+       "accessDenied": "Accès refusé"
     },
     "homePage": {
       "title": "Page d'accueil",
@@ -557,7 +561,8 @@ export const translations = {
       "exerciseOption": "Esercizio",
       "textOption": "Testo",
       "language": "Lingua: ",
-      "submit": "Invia"
+      "submit": "Invia",
+      "accessDenied": "Accesso negato"
     },
     "homePage": {
       "title": "Pagina Iniziale",
@@ -672,7 +677,8 @@ export const translations = {
       "exerciseOption": "Übung",
       "textOption": "Text",
       "language": "Sprache: ",
-      "submit": "Absenden"
+      "submit": "Absenden",
+       "accessDenied": "Zugriff verweigert"
     },
     "homePage": {
       "title": "Startseite",

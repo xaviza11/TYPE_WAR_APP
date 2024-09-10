@@ -1,5 +1,6 @@
 <template>
-  <div class="create-text">
+  <div>
+  <div class="create-text" v-if="userType==='admin'">
     <h2>{{ t('createTextPage.createText') }}</h2>
     <form @submit.prevent="handleCreateText">
       <div>
@@ -39,8 +40,12 @@
       <button type="submit">{{ t('createTextPage.submit') }}</button>
     </form>
     <Alert v-if="errorMessage" :message="errorMessage" @close="clearErrorMessage" />
-    <NavBar></NavBar>
   </div>
+  <div v-if="userType !== 'admin' && userType !== undefined">
+    <p>{{ t('createTextPage.accessDenied') }}</p>
+  </div>
+  <NavBar></NavBar>
+</div>
 </template>
 
 <script lang="ts">
@@ -49,6 +54,7 @@ import  Alert  from '../components/Alert.vue';
 import postCreateText from '../handlers/texts/postCreateText';
 import NavBar from '../components/NavBar.vue'
 import { useTranslate } from '../utils/useTranslate/useTranslate';
+import Cookies from 'js-cookie';
 
 export default defineComponent({
   name: 'CreateText',
@@ -56,6 +62,7 @@ export default defineComponent({
     Alert,
   },
   setup() {
+    const userType = Cookies.get('userType')
     const {t} = useTranslate()
     const title = ref('')
     const text = ref('');
@@ -97,7 +104,8 @@ export default defineComponent({
       handleCreateText,
       errorMessage,
       clearErrorMessage,
-      t
+      t,
+      userType
     };
   }
 });
