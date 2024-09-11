@@ -9,7 +9,7 @@
 
 import { TRUNCATE_TEXT } from '../../utils/text/truncateText';
 import Cookies from 'js-cookie';
-import { useRuntimeConfig } from 'nuxt/app';
+import { useRuntimeConfig, useRouter } from 'nuxt/app';
 
 export default async function postCreateText(title: string, text: string, type: string, language: string) {
     try {
@@ -38,6 +38,11 @@ export default async function postCreateText(title: string, text: string, type: 
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }

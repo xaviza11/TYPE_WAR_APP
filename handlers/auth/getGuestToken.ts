@@ -3,7 +3,7 @@
  * @returns {Promise<{access_token: token as string, expirationDate: expirationDate as ISOString()}>} - The server response or an error message.
  */
 
-import { useRuntimeConfig } from "nuxt/app";
+import { useRuntimeConfig, useRouter } from "nuxt/app";
 
 export default async function getGuestToken() {
 
@@ -29,6 +29,11 @@ export default async function getGuestToken() {
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }

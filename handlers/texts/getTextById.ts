@@ -4,7 +4,7 @@
  * @returns {Promise<Object>} - The server response text or error
  */
 
-import { useRuntimeConfig } from "nuxt/app";
+import { useRuntimeConfig, useRouter } from "nuxt/app";
 import Cookies from 'js-cookie'
 
 export default async function getOneText(id: string) {
@@ -30,6 +30,11 @@ export default async function getOneText(id: string) {
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }

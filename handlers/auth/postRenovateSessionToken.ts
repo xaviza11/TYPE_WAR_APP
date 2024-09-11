@@ -6,7 +6,7 @@
  * @returns {Promise<{ access_token: token as string, name: userName as string, type: userType as string, expirationDate: expirationDate as ISOString }>} - The server response or an error message.
  */
 
-import { useRuntimeConfig } from "nuxt/app";
+import { useRuntimeConfig, useRouter } from "nuxt/app";
 
 export default async function postRenovateSessionToken(userToken: string, name: string, type: string) {
     try {
@@ -31,6 +31,11 @@ export default async function postRenovateSessionToken(userToken: string, name: 
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }

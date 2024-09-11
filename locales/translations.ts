@@ -118,6 +118,16 @@ export const translations = {
       "text": "  Este sitio web utiliza cookies mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra ",
       "text2": "política de privacidad",
       "accept": "Aceptar"
+    },
+    "500": {
+      "title": "Servidor fuera de servicio",
+      "text": "El servidor está caído o no disponible en este momento. Inténtalo nuevamente más tarde.",
+      "return": "Volver al inicio"
+    },
+    "404": {
+      "title": "404 - Página no encontrada",
+      "text": "Lo sentimos, la página que estás buscando no existe.",
+      "return": "Volver al inicio"
     }
   },
 
@@ -245,7 +255,17 @@ export const translations = {
       "text": "This website uses cookies to enhance the user experience. By continuing to browse, you agree to our ",
       "text2": "privacy policy",
       "accept": "Accept"
-    }
+    },
+    "500": {
+      "title": "Server out of service",
+      "text": "The server is down or currently unavailable. Please try again later.",
+      "return": "Return to homepage"
+    },
+    "404": {
+      "title": "404 - Page not found",
+      "text": "Sorry, the page you are looking for does not exist.",
+      "return": "Return to homepage"
+    },
   },
 
 
@@ -372,7 +392,17 @@ export const translations = {
       "text": "This website uses cookies to improve user experience. By continuing to browse, you accept our ",
       "text2": "privacy policy",
       "accept": "Accept"
-    }
+    },
+    "500": {
+      "title": "Server is down",
+      "text": "The server is down or not available at the moment. Please try again later.",
+      "return": "Go back to homepage"
+    },
+    "404": {
+      "title": "404 - Page not found",
+      "text": "Sorry, the page you're looking for doesn't exist.",
+      "return": "Go back to homepage"
+    },
   },
 
 
@@ -499,6 +529,16 @@ export const translations = {
       "text": "Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant à naviguer, vous acceptez notre ",
       "text2": "politique de confidentialité",
       "accept": "Accepter"
+    },
+    "500": {
+      "title": "Serveur hors service",
+      "text": "Le serveur est en panne ou indisponible pour le moment. Veuillez réessayer plus tard.",
+      "return": "Retour à l'accueil"
+    },
+    "404": {
+      "title": "404 - Page non trouvée",
+      "text": "Désolé, la page que vous cherchez n'existe pas.",
+      "return": "Retour à l'accueil"
     }
   },
 
@@ -626,7 +666,17 @@ export const translations = {
       "text": "Questo sito web utilizza i cookie per migliorare l'esperienza dell'utente. Continuando a navigare, accetti la nostra ",
       "text2": "politica sulla privacy",
       "accept": "Accetta"
-    }
+    },
+    "500": {
+      "title": "Server non disponibile",
+      "text": "Il server è inattivo o non disponibile al momento. Riprova più tardi.",
+      "return": "Torna alla homepage"
+    },
+    "404": {
+      "title": "404 - Pagina non trovata",
+      "text": "Spiacenti, la pagina che stai cercando non esiste.",
+      "return": "Torna alla homepage"
+    },
   },
 
 
@@ -753,6 +803,16 @@ export const translations = {
       "text": "Diese Website verwendet Cookies, um das Benutzererlebnis zu verbessern. Durch die weitere Nutzung der Website stimmen Sie unserer ",
       "text2": "Datenschutzrichtlinie",
       "accept": "Akzeptieren"
-    }
+    },
+    "500": {
+      "title": "Server außer Betrieb",
+      "text": "Der Server ist ausgefallen oder momentan nicht verfügbar. Bitte versuchen Sie es später erneut.",
+       "return": "Zurück zur Startseite"
+    },
+    "404": {
+      "title": "404 - Seite nicht gefunden",
+      "text": "Entschuldigung, die von Ihnen gesuchte Seite existiert nicht.",
+      "return": "Zurück zur Startseite"
+    },
   }
 }

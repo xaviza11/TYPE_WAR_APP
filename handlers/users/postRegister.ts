@@ -7,7 +7,7 @@
  */
 
 import { IS_VALID_EMAIL, IS_VALID_NAME, IS_VALID_PASSWORD } from '../../utils/validators/usersRegex';
-import { useRuntimeConfig } from 'nuxt/app';
+import { useRuntimeConfig, useRouter } from 'nuxt/app';
 import Cookies from 'js-cookie'
 
 export default async function postRegister(email: string, password: string, name: string) {
@@ -41,6 +41,12 @@ export default async function postRegister(email: string, password: string, name
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }

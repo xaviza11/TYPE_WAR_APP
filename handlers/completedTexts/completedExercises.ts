@@ -4,7 +4,7 @@
  */
 
 import Cookies from "js-cookie";
-import { useRuntimeConfig } from "nuxt/app";
+import { useRuntimeConfig, useRouter } from "nuxt/app";
 
 export default async function completedExercises() {
     try {
@@ -30,6 +30,11 @@ export default async function completedExercises() {
         const data = await response.json();
         return { success: true, data };
     } catch (err: any) {
+        const router = useRouter();
+
+        if (err.message === 'Failed to fetch') {
+            router.push('/Server500');
+        }
         return { success: false, message: err.message };
     }
 }
