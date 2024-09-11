@@ -8,9 +8,11 @@
 import { IS_VALID_PASSWORD, IS_VALID_EMAIL } from "../../utils/validators/usersRegex";
 import { useRuntimeConfig, useRouter } from "nuxt/app";
 import Cookies from 'js-cookie';
+import { useTranslateErrors } from "../../utils/useTranslate/useTranslateErrors";
 
 export default async function postAuth(email: string, password: string) {
     try {
+        const {translateError} = useTranslateErrors()
         const guestToken = Cookies.get('guestToken');
 
         const runtimeConfig = useRuntimeConfig();
@@ -19,8 +21,8 @@ export default async function postAuth(email: string, password: string) {
         const isValidEmail = IS_VALID_EMAIL(email);
         const isValidPassword = IS_VALID_PASSWORD(password);
 
-        if (!isValidEmail) return { success: false, message: 'Invalid email' };
-        if (!isValidPassword) return { success: false, message: 'Invalid password' };
+        if (!isValidEmail) return { success: false, message: translateError('Invalid email') };
+        if (!isValidPassword) return { success: false, message: translateError('Invalid password') };
 
         const response = await fetch(url, {
             method: 'POST',
@@ -33,7 +35,7 @@ export default async function postAuth(email: string, password: string) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || 'An error occurred' };
+            return { success: false, message: errorData.message || translateError('An error occurred') };
         }
 
         const data = await response.json();

@@ -4,10 +4,11 @@
  */
 
 import { useRuntimeConfig, useRouter } from "nuxt/app";
+import { useTranslateErrors } from "../../utils/useTranslate/useTranslateErrors";
 
 export default async function getGuestToken() {
 
-
+    const {translateError} = useTranslateErrors()
     const runtimeConfig = useRuntimeConfig()
 
     const url = `${runtimeConfig.public.apiUrl}/auth/generateGuestToken`
@@ -23,7 +24,7 @@ export default async function getGuestToken() {
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || 'An error occurred' };
+            return { success: false, message: errorData.message || translateError('An error occurred') };
         }
 
         const data = await response.json();

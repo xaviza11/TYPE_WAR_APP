@@ -10,16 +10,20 @@
 import { TRUNCATE_TEXT } from '../../utils/text/truncateText';
 import Cookies from 'js-cookie';
 import { useRuntimeConfig, useRouter } from 'nuxt/app';
+import { useTranslateErrors } from '../../utils/useTranslate/useTranslateErrors';
 
 export default async function postCreateText(title: string, text: string, type: string, language: string) {
     try {
+
+        const {translateError} = useTranslateErrors()
+
         const runtimeConfig = useRuntimeConfig()
         const url = `${runtimeConfig.public.apiUrl}/texts`
         const userToken = Cookies.get('userToken')
         const truncateText = TRUNCATE_TEXT(text)
         const userName = Cookies.get('userName')
 
-        if (!userToken) return { success: false, message: 'please signin' }
+        if (!userToken) return { success: false, message: translateError('Please signin')}
 
         const response = await fetch(url, {
             method: 'POST',
@@ -32,7 +36,7 @@ export default async function postCreateText(title: string, text: string, type: 
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || 'An error occurred' };
+            return { success: false, message: errorData.message || translateError('An error occurred')};
         }
 
         const data = await response.json();

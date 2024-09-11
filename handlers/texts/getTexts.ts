@@ -7,9 +7,13 @@
 
 import Cookies from "js-cookie";
 import { useRuntimeConfig, useRouter } from "nuxt/app";
+import { useTranslateErrors } from "../../utils/useTranslate/useTranslateErrors";
 
 export default async function getTexts(type: string, hasLanguage: boolean) {
     try {
+
+        const {translateError} = useTranslateErrors()
+
         let language = 'all';
         if (hasLanguage) language = Cookies.get('language') || 'all';
 
@@ -28,7 +32,7 @@ export default async function getTexts(type: string, hasLanguage: boolean) {
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || 'An error occurred' };
+            return { success: false, message: errorData.message || translateError('An error occurred')};
         }
 
         const data = await response.json();
