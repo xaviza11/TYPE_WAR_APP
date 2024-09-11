@@ -2,6 +2,8 @@
   <div class="TypePage">
     <TypePanel :title="title" :text="text" :language="language" :createdAt="createdAt" />
     <NavBar></NavBar>
+
+    <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
   </div>
 </template>
 
@@ -13,6 +15,7 @@ import getOneText from '../handlers/texts/getTextById';
 import NavBar from '../components/NavBar.vue';
 import { useTranslate } from '../utils/useTranslate/useTranslate'
 import { useHead } from '@unhead/vue'
+import Alert from '../components/Alert.vue';
 
 export default defineComponent({
   name: 'TypePage',
@@ -46,15 +49,24 @@ export default defineComponent({
     const text = ref('');
     const language = ref('');
     const createdAt = ref('');
+    const errorMessage = ref('');
 
     const getTitleFromRoute = async () => {
       const queryId = route.query._id as string;
       const response = await getOneText(queryId);
-      title.value = response.data.title;
-      text.value = response.data.text;
-      language.value = response.data.language;
-      createdAt.value = response.data.createdAt;
+      if (response.success) {
+        title.value = response.data.title;
+        text.value = response.data.text;
+        language.value = response.data.language;
+        createdAt.value = response.data.createdAt;
+      }else {
+        errorMessage.value = response.message
+      }
     };
+
+    const clearErrorMessage = () => {
+        errorMessage.value = '';
+      };
 
     onMounted(() => {
       getTitleFromRoute();
@@ -64,7 +76,9 @@ export default defineComponent({
       title,
       text,
       language,
-      createdAt
+      createdAt,
+      errorMessage,
+      clearErrorMessage
     };
   }
 });

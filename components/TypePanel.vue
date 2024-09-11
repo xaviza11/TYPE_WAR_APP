@@ -131,7 +131,6 @@ export default defineComponent({
         }
 
         if (newUserInput.trim() === props.text.trim()) {
-          console.log('work')
           alert('you win')
           isRunning.value = false;
           stopTimer(); 

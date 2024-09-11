@@ -2,28 +2,37 @@
   <div class="home">
     <NavBar></NavBar>
     <AutoType></AutoType>
-    <RankingPanel></RankingPanel>
+    <RankingPanel :rankings="rankings" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import AutoType from '../components/AutoType.vue';
-import NavBar from '../components/NavBar.vue'
-import getUsersRanking from '../handlers/completedTexts/getUsersRanking';
+import NavBar from '../components/NavBar.vue';
 import RankingPanel from '../components/RankingPanel.vue';
 import { useTranslate } from '../utils/useTranslate/useTranslate';
 import { useHead } from '@unhead/vue';
+import getUsersRanking from '../handlers/completedTexts/getUsersRanking';
+import Alert from '../components/Alert.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
     AutoType,
-    NavBar
+    NavBar,
+    RankingPanel
   },
   setup() {
+    const { t } = useTranslate();
+    const rankings = ref([]);
+    const errorMessage = ref('')
 
-    const {t} = useTranslate()
+    const loadRankings = async () => {
+      const result = await getUsersRanking();
+      if(result.success) rankings.value = result.data;
+      else errorMessage.value = result.message
+    };
 
     useHead({
       title: t('homePage.title'),
@@ -41,17 +50,20 @@ export default defineComponent({
           content: t('homePage.ogDescription')
         }
       ]
-    })
-
-    onMounted(async () => {
-      try {
-        const ranking = await getUsersRanking();
-      } catch (error) {
-        console.error('Error fetching ranking:', error);
-      }
     });
 
-    return {};
+    onMounted(loadRankings);
+
+    const clearErrorMessage = () => {
+        errorMessage.value = '';
+      };
+
+    return {
+      rankings,
+      clearErrorMessage,
+      errorMessage,
+      t
+    };
   },
 });
 </script>

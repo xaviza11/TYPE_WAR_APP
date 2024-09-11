@@ -11,6 +11,8 @@
       </ul>
     </div>
     <NavBar></NavBar>
+    
+    <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import ExerciseList from '../components/ExerciseList.vue';
 import NavBar from '../components/NavBar.vue'
 import { useTranslate } from '../utils/useTranslate/useTranslate';
 import { useHead } from '@unhead/vue';
+import Alert from '../components/Alert.vue'
 
 export default defineComponent({
   name: 'ExercisesPage',
@@ -31,6 +34,7 @@ export default defineComponent({
 
   setup() {
     const {t} = useTranslate()
+    const errorMessage = ref('')
 
     useHead({
       title: t('exercisesPage.title'),
@@ -58,7 +62,7 @@ export default defineComponent({
       if (response.success) {
         exerciseList.value = response.data;
       } else {
-        console.error(response.message);
+        errorMessage.value = response.message
       }
     };
 
@@ -66,11 +70,17 @@ export default defineComponent({
       router.push({ path: '/typePage', query: { title: exercise.title, _id: exercise._id } });
     };
 
+    const clearErrorMessage = () => {
+        errorMessage.value = '';
+      };
+
     getTextHandle();
 
     return {
       exerciseList,
       navigateTypePage,
+      errorMessage,
+      clearErrorMessage,
       t
     };
   },
