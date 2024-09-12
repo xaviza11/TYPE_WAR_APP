@@ -8,7 +8,7 @@
 
       <div class="menu-content" v-if="!isCollapsed">
         <div class="user-info">
-          <p>{{ userName || t('navbar.welcome') }} </p>
+          <h3>{{ userName || t('navbar.welcome') }} </h3>
         </div>
 
         <nav class="nav-links">
@@ -16,8 +16,8 @@
           <router-link to="/exercises" class="nav-item">{{ t('navbar.exercises') }}</router-link>
           <router-link to="/texts" class="nav-item">{{ t('navbar.texts') }}</router-link>
           <router-link to="/createText" v-if="userName && userType === 'admin'" class="nav-item">{{ t('navbar.createText') }}</router-link>
-          <router-link to="/signin" v-if="!userName" class="nav-item">{{ t('navbar.signin') }}</router-link>
-          <router-link to="/register" v-if="!userName" class="nav-item">{{ t('navbar.register') }}</router-link>
+          <router-link to="/privacyPolicy" class="nav-item">{{ t('navbar.privacyPolicy') }}</router-link>
+          <router-link to="/settings" v-if="userName" class="nav-item">{{ t('navbar.settings') }}</router-link>
         </nav>
 
         <div class="settings">
@@ -39,6 +39,14 @@
               <option value="normal">{{ t('navbar.normal') }}</option>
               <option value="master">{{ t('navbar.master') }}</option>
             </select>
+
+            <div v-if="userName !== undefined" class="signout-button">
+                <button @click="signOut">{{ t('navbar.closeSession') }}</button>
+            </div>
+            <div class="sessionContainer" v-else>
+              <router-link to="/signin"  v-if="!userName" class="sessionButton">{{ t('navbar.signin') }}</router-link>
+              <router-link to="/register" v-if="!userName" class="sessionButton">{{ t('navbar.register') }}</router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -59,17 +67,17 @@ export default defineComponent({
 
     const {t} = useTranslate()
 
-    let language = navigator?.languages ? navigator?.languages[0] : navigator?.language
-    if(HAS_LANGUAGE(language)) Cookies.set('language', 'es-ES', {expires: 365*10})
+    let language = Cookies.get('language') || 'none'
+    if(HAS_LANGUAGE(language)) Cookies.set('language', language, {expires: 365*10})
     else{
-      language = 'es-ES' 
+      language = navigator?.languages ? navigator?.languages[0] : navigator?.language
       Cookies.set('language', language, {expires: 365*10})
     } 
 
     const userName = ref(Cookies.get('userName'))
     const userType = ref(Cookies.get('userType'))
     const hasUser = typeof userName === 'string'
-    const selectedLanguage = ref(Cookies.get('language') || language);
+    const selectedLanguage = ref(language);
     const selectedMode = ref(Cookies.get('mode') || 'normal');
     const isCollapsed = ref(true);
     const toggleCollapse = () => {
@@ -86,6 +94,14 @@ export default defineComponent({
       window.location.reload();
     };
 
+    const signOut = () => {
+      Cookies.remove('userType');
+      Cookies.remove('userToken');
+      Cookies.remove('userName');
+      Cookies.remove('sessionExpirationDate');
+      window.location.reload()
+    };
+
     return {
       userName,
       selectedLanguage,
@@ -96,6 +112,7 @@ export default defineComponent({
       changeMode,
       userType,
       hasUser,
+      signOut,
       t
     };
   },
@@ -108,14 +125,20 @@ export default defineComponent({
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #2c3e50;
-  color: #ecf0f1;
+  background-color: #ffffff;
+  color: #000000;
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: width 0.3s ease;
-  width: 200px;
+  width: 18vw;
+}
+
+@media screen and (orientation: portrait) {
+  .navbar {
+    width: 70vw;
+  }
 }
 
 .navbar-collapsed {
@@ -143,18 +166,24 @@ export default defineComponent({
 
 .navbar-collapsed {
   width: 10px;
+  background-color: black;
 }
 
 .navbar:not(.navbar-collapsed) .menu-container {
   width: 200px;
 }
 
+.navbar:not(.navbar-collapsed) .collapse-button {
+  background-color: #000000;
+  color: white
+}
+
 .collapse-button {
   position: absolute;
   top: 50%;
-  right: -15px;
+  right: -20px;
   transform: translateY(-50%);
-  background-color: #34495e;
+  background-color: #ffffff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -177,26 +206,27 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 2px solid white;
+  border-top: 2px solid rgb(0, 0, 0);
 }
 
 .nav-item {
-  color: #ecf0f1;
+  color: #000000;
   text-decoration: none;
+  text-align: center;
   padding: 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .nav-item:hover {
-  background-color: #34495e;
+  background-color: #ffffff;
 }
 
 .settings {
   width: 90%;
   margin-top: auto;
   padding-top: 12px;
-  border-top: 2px solid white;
+  border-top: 2px solid rgb(0, 0, 0);
 }
 
 .settings select {
@@ -213,5 +243,50 @@ label {
   margin-bottom: 5px;
   font-size: 14px;
   display: block;
+}
+
+.signout-button button {
+  background-color: #000000; 
+  color: #ffffff;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  width: 100%; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.signout-button button:hover {
+  background-color: #c0392b;
+}
+
+.sessionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.sessionButton {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px 0;
+  text-align: center;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  border: none;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sessionButton:hover {
+  background-color: #007b2f;
+  transform: translateY(-2px);
 }
 </style>

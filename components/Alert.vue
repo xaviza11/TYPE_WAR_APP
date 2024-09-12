@@ -1,8 +1,10 @@
 <template>
-  <div class="alert">
+   <div class="overlay">
+      <div class="alert">
     {{ translatedMessage }}
     <button @click="dismissAlert">{{ t('alert.ok') }}</button>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -46,11 +48,60 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.alert {
-  color: red;
-  font-weight: bold;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
 }
-button {
-  margin-left: 10px;
+
+.alert {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(5, 5, 5, 0.667);
+  height: 50vh;
+  width: 100%;
+  max-width: 500px; 
+  text-align: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.alert h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.alert p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.alert button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 10vw;
+}
+
+.alert button:hover {
+  background-color: #0056b3;
 }
 </style>

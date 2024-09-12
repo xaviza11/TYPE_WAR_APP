@@ -3,10 +3,10 @@
     <div v-if="exerciseList.length === 0">
       {{ t('exercisesPage.loadingPage') }}
     </div>
-    <div v-else>
+    <div class="content-container" v-else>
       <ul>
         <li v-for="(exercise, index) in exerciseList" :key="index" @click.prevent="navigateTypePage(exercise)">
-          {{ index + 1 }}. {{ exercise.title }}
+          <p>{{ index + 1 }}. {{ exercise.title }}</p>
         </li>
       </ul>
     </div>
@@ -20,7 +20,6 @@
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import getTexts from '../handlers/texts/getTexts';
-import ExerciseList from '../components/ExerciseList.vue';
 import NavBar from '../components/NavBar.vue'
 import { useTranslate } from '../utils/useTranslate/useTranslate';
 import { useHead } from '@unhead/vue';
@@ -28,9 +27,6 @@ import Alert from '../components/Alert.vue'
 
 export default defineComponent({
   name: 'ExercisesPage',
-  components: {
-    ExerciseList,
-  },
 
   setup() {
     const {t} = useTranslate()
@@ -89,6 +85,43 @@ export default defineComponent({
 
 <style scoped>
 .exercises-page {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
 }
+
+.content-container {
+  background-color: white;
+  height: 90vh;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+  border: 1px solid #ddd; 
+  font-family: 'Times New Roman', serif; 
+  line-height: 1.6; 
+  color: #333; 
+  background-image: url('../public/images/paperBackGound.png'); 
+  background-size: cover;
+}
+
+@media (orientation: portrait) {
+  .content-container {
+    width: 70vw;
+  }
+}
+
+.content-container h1, .content-container h2, .content-container p {
+  font-family: 'Georgia', serif; 
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  cursor: pointer
+}
+
 </style>

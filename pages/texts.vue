@@ -1,12 +1,12 @@
 <template>
-  <div class="exercises-page">
+  <div class="texts-page">
     <div v-if="exerciseList.length === 0">
       {{ t('textsPage.loadingExercises') }}
     </div>
-    <div v-else>
+    <div class="content-container" v-else>
       <ul>
         <li v-for="(exercise, index) in exerciseList" :key="exercise._id" @click.prevent="navigateTypePage(exercise.title, exercise._id)">
-          {{ index + 1 }}. {{ exercise.title }}
+         <p>{{ index + 1 }}. {{ exercise.title }}</p> 
         </li>
       </ul>
     </div>
@@ -19,7 +19,6 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import ExerciseList from '../components/ExerciseList.vue';
 import getTexts  from '../handlers/texts/getTexts';
 import NavBar from '../components/NavBar.vue'
 import { useTranslate } from '../utils/useTranslate/useTranslate';
@@ -28,9 +27,6 @@ import Alert from '../components/Alert.vue'
 
 export default defineComponent({
   name: 'ExercisesPage',
-  components: {
-    ExerciseList,
-  },
   setup() {
     const router = useRouter(); 
     const exerciseList = ref<Array<{ _id: string; title: string }>>([]);
@@ -87,7 +83,43 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.exercises-page {
-  padding: 20px;
+.texts-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+}
+
+.content-container {
+  background-color: white;
+  height: 90vh;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px var(--transparent-color), 0 1px 3px var(--transparent-color); 
+  border: 1px solid var(--grey-color); 
+  font-family: 'Times New Roman', serif; 
+  line-height: 1.6; 
+  color: var(--grey-color); 
+  background-image: url('../public/images/paperBackGound.png'); 
+  background-size: cover;
+}
+
+@media (orientation: portrait) {
+  .content-container {
+    width: 70vw;
+  }
+}
+
+.content-container h1, .content-container h2, .content-container p {
+  font-family: 'Georgia', serif; 
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  cursor: pointer
 }
 </style>

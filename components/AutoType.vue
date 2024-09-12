@@ -1,12 +1,23 @@
 <template>
-    <div class="auto-typing">
-      <h5>{{ t('autoType.seconds') }} {{ seconds }}</h5>
-      <h5>{{ t('autoType.pulsations') }}: {{ pulsations }}</h5>
-      <h5>{{ t('autoType.totalErrors') }} {{ totalErrors }}</h5>
-      <h5>{{ t('autoType.pps')  }} {{ pps }}</h5>
-      <h2 v-html="renderText()"></h2>
-    </div>
-  </template>
+  <div class="auto-typing">
+    <h2 v-html="renderText()"></h2>
+    <table class="stats-table">
+      <tr>
+        <td>{{ t('autoType.seconds') }}</td>
+        <td>{{ seconds }}</td>
+        <td>{{ t('autoType.pulsations') }}</td>
+        <td>{{ pulsations }}</td>
+      </tr>
+      <tr>
+        <td>{{ t('autoType.totalErrors') }}</td>
+        <td>{{ totalErrors }}</td>
+        <td>{{ t('autoType.pps') }}</td>
+        <td>{{ pps }}</td>
+      </tr>
+    </table>
+  </div>
+</template>
+
   
   <script lang="ts">
   import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
@@ -122,6 +133,23 @@
   .auto-typing {
     font-family: Arial, sans-serif;
     padding: 20px;
+  }
+  
+  .stats-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .stats-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .stats-table td:first-child {
+    font-weight: bold;
   }
   </style>
   

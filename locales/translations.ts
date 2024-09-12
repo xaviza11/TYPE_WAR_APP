@@ -11,7 +11,10 @@ export const translations = {
       "signin": "Iniciar sesión",
       "register": "Registrarse",
       "createText": "Crear texto",
-      "welcome": "Bienvenido"
+      "welcome": "Bienvenido",
+      "closeSession": "Cerrar la sessión",
+      "privacyPolicy": "Política de privacidad",
+      "settings": "Ajustes"
     },
     "alert": {
       "ok": "OK"
@@ -33,7 +36,8 @@ export const translations = {
       "totalErrors": "Errores totales: ",
       "pps": "Pulsaciones por segundo: ",
       "language": "Idioma: ",
-      "createdAt": "Creado el: "
+      "createdAt": "Creado el: ",
+      "end": '¡Juego terminado! Cometiste un error.'
     },
     "rankingPanel": {
       "index": "Índice",
@@ -45,7 +49,8 @@ export const translations = {
       "previous": "Anterior",
       "next": "Siguiente",
       "page": "Página ",
-      "of": " de "
+      "of": " de ",
+      "usersRanking": "Clasificación de Usuarios"
     },
     "textsPage": {
       "loadingExercises": "Cargando ejercicios... ",
@@ -69,7 +74,9 @@ export const translations = {
       "title": "Iniciar sesión",
       "description": "Entra en TypeWar y mejora tu mecanografía.",
       "ogTitle": "Iniciar sesión",
-      "ogDescription": "Entra en TypeWar y mejora tu mecanografía."
+      "ogDescription": "Entra en TypeWar y mejora tu mecanografía.",
+      "home": "Inicio",
+      "register": "Registrarse"
     },
     "registerPage": {
       "register": "Registrarse",
@@ -80,7 +87,9 @@ export const translations = {
       "title": "Regístrate",
       "ogTitle": "Regístrate",
       "description": "Regístrate en TypeWar y mejora tu mecanografía.",
-      "ogDescription": "Regístrate en TypeWar y mejora tu mecanografía."
+      "ogDescription": "Regístrate en TypeWar y mejora tu mecanografía.",
+      "home": "Inicio",
+      "signin": "Iniciar sesión"
     },
     "exercisesPage": {
       "loadingPage": "Cargando ejercicios... ",
@@ -98,7 +107,8 @@ export const translations = {
       "textOption": "Texto",
       "language": "Idioma: ",
       "submit": "Enviar",
-      "accessDenied": "Acceso denegado"
+      "accessDenied": "Acceso denegado",
+      "return": "Volver al inicio"
     },
     "homePage": {
       "title": "Página de inicio",
@@ -148,7 +158,10 @@ export const translations = {
       "signin": "Sign in",
       "register": "Register",
       "createText": "Create Text",
-      "welcome": "Welcome"
+      "welcome": "Welcome",
+      "closeSession": "Log out",
+      "privacyPolicy": "Privacy Policy",
+      "settings": "Settings"
     },
     "alert": {
       "ok": "OK"
@@ -170,7 +183,8 @@ export const translations = {
       "totalErrors": "Total Errors: ",
       "pps": "Keystrokes per Second: ",
       "language": "Language: ",
-      "createdAt": "Created at: "
+      "createdAt": "Created at: ",
+      "end": "Game over! You made a mistake"
     },
     "rankingPanel": {
       "index": "Index",
@@ -182,7 +196,8 @@ export const translations = {
       "previous": "Previous",
       "next": "Next",
       "page": "Page ",
-      "of": " of "
+      "of": " of ",
+      "usersRanking": "Users Ranking"
     },
     "textsPage": {
       "loadingExercises": "Loading exercises... ",
@@ -206,7 +221,9 @@ export const translations = {
       "title": "Sign in",
       "description": "Sign in to TypeWar and improve your typing.",
       "ogTitle": "Sign in",
-      "ogDescription": "Sign in to TypeWar and improve your typing."
+      "ogDescription": "Sign in to TypeWar and improve your typing.",
+      "home": "Home",
+      "register": "Sign up"
     },
     "registerPage": {
       "register": "Register",
@@ -217,7 +234,9 @@ export const translations = {
       "title": "Register",
       "ogTitle": "Register",
       "description": "Register at TypeWar and improve your typing skills.",
-      "ogDescription": "Register at TypeWar and improve your typing skills."
+      "ogDescription": "Register at TypeWar and improve your typing skills.",
+      "home": "Home",
+      "signin": "Sign in"
     },
     "exercisesPage": {
       "loadingPage": "Loading exercises... ",
@@ -235,7 +254,8 @@ export const translations = {
       "textOption": "Text",
       "language": "Language: ",
       "submit": "Submit",
-      "accessDenied": "Access denied"
+      "accessDenied": "Access denied",
+      "return": "Return to homepage"
     },
     "homePage": {
       "title": "Home Page",
@@ -285,7 +305,10 @@ export const translations = {
       "signin": "Sign In",
       "register": "Register",
       "createText": "Create Text",
-      "welcome": "Welcome"
+      "welcome": "Welcome",
+      "closeSession": "Log out",
+      "privacyPolicy": "Privacy Policy",
+      "settings": "Settings"
     },
     "alert": {
       "ok": "OK"
@@ -307,7 +330,8 @@ export const translations = {
       "totalErrors": "Total Errors: ",
       "pps": "Keystrokes per Second: ",
       "language": "Language: ",
-      "createdAt": "Created At: "
+      "createdAt": "Created At: ",
+      "end": "Game over! You made a mistake."
     },
     "rankingPanel": {
       "index": "Index",
@@ -319,7 +343,8 @@ export const translations = {
       "previous": "Previous",
       "next": "Next",
       "page": "Page ",
-      "of": " of "
+      "of": " of ",
+      "usersRanking": "Users Ranking"
     },
     "textsPage": {
       "loadingExercises": "Loading exercises... ",
@@ -343,7 +368,9 @@ export const translations = {
       "title": "Sign In",
       "description": "Sign in to TypeWar and improve your typing.",
       "ogTitle": "Sign In",
-      "ogDescription": "Sign in to TypeWar and improve your typing."
+      "ogDescription": "Sign in to TypeWar and improve your typing.",
+      "home": "Home",
+      "register": "Register"
     },
     "registerPage": {
       "register": "Register",
@@ -354,7 +381,9 @@ export const translations = {
       "title": "Register",
       "ogTitle": "Register",
       "description": "Register at TypeWar and improve your typing skills.",
-      "ogDescription": "Register at TypeWar and improve your typing skills."
+      "ogDescription": "Register at TypeWar and improve your typing skills.",
+      "home": "Home",
+      "signin": "Sign in"
     },
     "exercisesPage": {
       "loadingPage": "Loading exercises... ",
@@ -372,7 +401,8 @@ export const translations = {
       "textOption": "Text",
       "language": "Language: ",
       "submit": "Submit",
-      "accessDenied": "Access denied"
+      "accessDenied": "Access denied",
+      "return": "Go back to homepage"
     },
     "homePage": {
       "title": "Home Page",
@@ -423,6 +453,9 @@ export const translations = {
       "register": "S'inscrire",
       "createText": "Créer un texte",
       "welcome": "Bienvenue",
+      "closeSession": "Fermer la session",
+      "privacyPolicy": "Politique de confidentialité",
+      "settings": "Paramètres"
     },
     "alert": {
       "ok": "OK"
@@ -444,7 +477,8 @@ export const translations = {
       "totalErrors": "Erreurs totales : ",
       "pps": "Frappes par seconde : ",
       "language": "Langue : ",
-      "createdAt": "Créé le : "
+      "createdAt": "Créé le : ",
+      "end": "Jeu terminé ! Vous avez fait une erreur."
     },
     "rankingPanel": {
       "index": "Index",
@@ -456,7 +490,8 @@ export const translations = {
       "previous": "Précédent",
       "next": "Suivant",
       "page": "Page ",
-      "of": " de "
+      "of": " de ",
+      "usersRanking": "Classement des Utilisateurs"
     },
     "textsPage": {
       "loadingExercises": "Chargement des exercices... ",
@@ -480,7 +515,9 @@ export const translations = {
       "title": "Connexion",
       "description": "Connectez-vous à TypeWar et améliorez votre dactylographie.",
       "ogTitle": "Connexion",
-      "ogDescription": "Connectez-vous à TypeWar et améliorez votre dactylographie."
+      "ogDescription": "Connectez-vous à TypeWar et améliorez votre dactylographie.",
+      "home": "Accueil",
+      "register": "S'inscrire"
     },
     "registerPage": {
       "register": "S'inscrire",
@@ -491,7 +528,9 @@ export const translations = {
       "title": "Inscription",
       "ogTitle": "Inscription",
       "description": "Inscrivez-vous sur TypeWar et améliorez vos compétences en dactylographie.",
-      "ogDescription": "Inscrivez-vous sur TypeWar et améliorez vos compétences en dactylographie."
+      "ogDescription": "Inscrivez-vous sur TypeWar et améliorez vos compétences en dactylographie.",
+      "home": "Accueil",
+      "signin": "Se connecter"
     },
     "exercisesPage": {
       "loadingPage": "Chargement des exercices... ",
@@ -509,7 +548,8 @@ export const translations = {
       "textOption": "Texte",
       "language": "Langue : ",
       "submit": "Envoyer",
-       "accessDenied": "Accès refusé"
+      "accessDenied": "Accès refusé",
+      "return": "Retour à l'accueil"
     },
     "homePage": {
       "title": "Page d'accueil",
@@ -559,7 +599,10 @@ export const translations = {
       "signin": "Accedi",
       "register": "Registrati",
       "createText": "Crea Testo",
-      "welcome": "Benvenuto"
+      "welcome": "Benvenuto",
+      "closeSession": "Chiudi la sessione",
+      "privacyPolicy": "Informativa sulla privacy",
+      "settings": "Impostazioni"
     },
     "alert": {
       "ok": "OK"
@@ -581,7 +624,8 @@ export const translations = {
       "totalErrors": "Errori Totali: ",
       "pps": "Tastate per Secondo: ",
       "language": "Lingua: ",
-      "createdAt": "Creato il: "
+      "createdAt": "Creato il: ",
+      "end": "Gioco finito! Hai commesso un errore."
     },
     "rankingPanel": {
       "index": "Indice",
@@ -593,7 +637,8 @@ export const translations = {
       "previous": "Precedente",
       "next": "Successivo",
       "page": "Pagina ",
-      "of": " di "
+      "of": " di ",
+      "usersRanking": "Classifica degli Utenti"
     },
     "textsPage": {
       "loadingExercises": "Caricamento esercizi... ",
@@ -617,7 +662,9 @@ export const translations = {
       "title": "Accedi",
       "description": "Accedi a TypeWar e migliora la tua dattilografia.",
       "ogTitle": "Accedi",
-      "ogDescription": "Accedi a TypeWar e migliora la tua dattilografia."
+      "ogDescription": "Accedi a TypeWar e migliora la tua dattilografia.",
+      "home": "Home",
+      "register": "Registrati"
     },
     "registerPage": {
       "register": "Registrati",
@@ -628,7 +675,9 @@ export const translations = {
       "title": "Registrati",
       "ogTitle": "Registrati",
       "description": "Registrati su TypeWar e migliora le tue abilità di dattilografia.",
-      "ogDescription": "Registrati su TypeWar e migliora le tue abilità di dattilografia."
+      "ogDescription": "Registrati su TypeWar e migliora le tue abilità di dattilografia.",
+      "home": "Home",
+      "signin": "Accedi"
     },
     "exercisesPage": {
       "loadingPage": "Caricamento esercizi... ",
@@ -646,7 +695,8 @@ export const translations = {
       "textOption": "Testo",
       "language": "Lingua: ",
       "submit": "Invia",
-      "accessDenied": "Accesso negato"
+      "accessDenied": "Accesso negato",
+      "return": "Torna alla homepage"
     },
     "homePage": {
       "title": "Pagina Iniziale",
@@ -683,7 +733,7 @@ export const translations = {
 
 
 
-  
+
   "de-DE": {
     "navbar": {
       "language": "Sprache: ",
@@ -696,7 +746,10 @@ export const translations = {
       "signin": "Anmelden",
       "register": "Registrieren",
       "createText": "Text erstellen",
-      "welcome": "Willkommen"
+      "welcome": "Willkommen",
+      "privacyPolicy": "Datenschutzrichtlinie",
+      "settings": "Einstellungen",
+      "closeSession": "Sitzung beenden"
     },
     "alert": {
       "ok": "OK"
@@ -718,7 +771,8 @@ export const translations = {
       "totalErrors": "Gesamtfehler: ",
       "pps": "Tastendrücke pro Sekunde: ",
       "language": "Sprache: ",
-      "createdAt": "Erstellt am: "
+      "createdAt": "Erstellt am: ",
+      "end": "Spiel beendet! Du hast einen Fehler gemacht."
     },
     "rankingPanel": {
       "index": "Index",
@@ -730,7 +784,8 @@ export const translations = {
       "previous": "Vorherige",
       "next": "Nächste",
       "page": "Seite ",
-      "of": " von "
+      "of": " von ",
+      "usersRanking": "Benutzer-Rangliste"
     },
     "textsPage": {
       "loadingExercises": "Übungen laden... ",
@@ -754,7 +809,9 @@ export const translations = {
       "title": "Anmelden",
       "description": "Melde dich bei TypeWar an und verbessere deine Tippfähigkeiten.",
       "ogTitle": "Anmelden",
-      "ogDescription": "Melde dich bei TypeWar an und verbessere deine Tippfähigkeiten."
+      "ogDescription": "Melde dich bei TypeWar an und verbessere deine Tippfähigkeiten.",
+      "home": "Startseite",
+      "register": "Registrieren"
     },
     "registerPage": {
       "register": "Registrieren",
@@ -765,7 +822,9 @@ export const translations = {
       "title": "Registrieren",
       "ogTitle": "Registrieren",
       "description": "Registriere dich bei TypeWar und verbessere deine Tippfähigkeiten.",
-      "ogDescription": "Registriere dich bei TypeWar und verbessere deine Tippfähigkeiten."
+      "ogDescription": "Registriere dich bei TypeWar und verbessere deine Tippfähigkeiten.",
+      "home": "Startseite",
+      "signin": "Anmelden"
     },
     "exercisesPage": {
       "loadingPage": "Übungen laden... ",
@@ -783,7 +842,8 @@ export const translations = {
       "textOption": "Text",
       "language": "Sprache: ",
       "submit": "Absenden",
-       "accessDenied": "Zugriff verweigert"
+      "accessDenied": "Zugriff verweigert",
+      "return": "Zurück zur Startseite"
     },
     "homePage": {
       "title": "Startseite",
@@ -807,12 +867,13 @@ export const translations = {
     "500": {
       "title": "Server außer Betrieb",
       "text": "Der Server ist ausgefallen oder momentan nicht verfügbar. Bitte versuchen Sie es später erneut.",
-       "return": "Zurück zur Startseite"
+      "return": "Zurück zur Startseite"
     },
     "404": {
       "title": "404 - Seite nicht gefunden",
       "text": "Entschuldigung, die von Ihnen gesuchte Seite existiert nicht.",
-      "return": "Zurück zur Startseite"
+      "return": "Zurück zur Startseite",
+      "closeSession": "Sitzung beenden"
     },
   }
 }

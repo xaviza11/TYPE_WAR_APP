@@ -13,4 +13,7 @@ export default defineNuxtConfig({
   alias: {
     '@components': '~/components',
   },
+  css: [
+    '~/normalize.css'
+  ]
 })

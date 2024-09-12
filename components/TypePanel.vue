@@ -1,25 +1,33 @@
 <template>
-  <div class="app">
+  <div class="typePanel">
     <div v-if="!isFinish">
-    <h1>{{ title }}</h1>
-    <h5>{{ t('typePanel.seconds') }} {{ seconds }}</h5>
-    <h5>{{ t('typePanel.pulsations') }} {{ pulsations }}</h5>
-    <h5 v-if="mood === 'normal'">{{ t('typePanel.totalErrors') }} {{ totalErrors }}</h5>
-    <h5>{{ t('typePanel.pps') }} {{ pulsationsPerSecond }}</h5>
-    <h2 v-html="renderText()"></h2>
-    <div class="additional-info">
-      <h5>{{ t('typePanel.language') }} {{ language }}</h5>
-      <h5>{{ t('typePanel.createdAt') }} {{ formattedCreatedAt }}</h5>
+      <h2>{{ title }} </h2>
+      <div class="stats-container">
+        <h2 v-html="renderText()"></h2>
+        <table class="stats-table">
+          <tr>
+            <td>{{ t('typePanel.seconds') }}</td>
+            <td>{{ seconds }}</td>
+            <td>{{ t('typePanel.pulsations') }}</td>
+            <td>{{ pulsations }}</td>
+          </tr>
+          <tr>
+            <td v-if="mood === 'normal'">{{ t('typePanel.totalErrors') }}</td>
+            <td v-if="mood === 'normal'">{{ totalErrors }}</td>
+            <td>{{ t('typePanel.pps') }}</td>
+            <td>{{ pulsationsPerSecond }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="additional-info">
+        <h5>{{ t('typePanel.language') }} {{ language }}</h5>
+        <h5>{{ t('typePanel.createdAt') }} {{ formattedCreatedAt }}</h5>
+      </div>
     </div>
-  </div>
     <div v-if="isFinish">
-     <FinishTextPanel
-      :seconds="seconds"
-      :pulsations="pulsations"
-      :totalErrors="totalErrors"
-      :pulsationsPerSecond="pulsationsPerSecond"
-    />
-  </div>
+      <FinishTextPanel :seconds="seconds" :pulsations="pulsations" :totalErrors="totalErrors"
+        :pulsationsPerSecond="pulsationsPerSecond" />
+    </div>
   </div>
 </template>
 
@@ -52,9 +60,7 @@ export default defineComponent({
     FinishTextPanel
   },
   setup(props) {
-
-    const {t} = useTranslate()
-
+    const { t } = useTranslate();
     const seconds = ref(0);
     const pulsations = ref(0);
     const userInput = ref('');
@@ -62,10 +68,10 @@ export default defineComponent({
     const timerStarted = ref(false);
     const deadKey = ref(false);
     const totalErrors = ref(0);
-    const isFinish = ref(false)
+    const isFinish = ref(false);
     let intervalId: number | null = null;
 
-    const mood: string = Cookies.get('mode') || 'normal'
+    const mood: string = Cookies.get('mode') || 'normal';
     const visibleLength = 20;
 
     const startTimer = () => {
@@ -109,13 +115,13 @@ export default defineComponent({
         if (!timerStarted.value) {
           timerStarted.value = true;
           isRunning.value = true;
-          startTimer(); 
+          startTimer();
         }
 
         const newUserInput = userInput.value + event.key;
 
         if (mood === 'master' && props.text[userInput.value.length] !== event.key) {
-          alert('¡Juego terminado! Cometiste un error.');
+          alert(t('typePanel.end'));
           resetGame();
           return;
         }
@@ -131,16 +137,16 @@ export default defineComponent({
         }
 
         if (newUserInput.trim() === props.text.trim()) {
-          alert('you win')
+          alert('you win');
           isRunning.value = false;
-          stopTimer(); 
-          isFinish.value = true
+          stopTimer();
+          isFinish.value = true;
         }
       }
     };
 
     const resetGame = () => {
-      stopTimer(); 
+      stopTimer();
       seconds.value = 0;
       pulsations.value = 0;
       userInput.value = '';
@@ -173,7 +179,7 @@ export default defineComponent({
         const actualIndex = start + index;
         if (actualIndex < userInput.value.length) {
           if (userInput.value[actualIndex] === char) {
-            backgroundColor = 'lightgreen'; 
+            backgroundColor = 'lightgreen';
           } else {
             backgroundColor = 'lightcoral';
           }
@@ -210,11 +216,31 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.app {
+.typePanel {
   font-family: Arial, sans-serif;
-  padding: 20px;
 }
+
+.stats-container {
+  padding: 6vh
+}
+
 .additional-info {
   margin-top: 20px;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stats-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+}
+
+.stats-table td:first-child {
+  font-weight: bold;
 }
 </style>

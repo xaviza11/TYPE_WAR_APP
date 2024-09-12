@@ -1,8 +1,10 @@
 <template>
     <div v-if="!cookiesAccepted" class="cookie-consent">
       <div class="content">
+        <div class="text-content">
         <p>{{ t('cookieComponent.text') }} <a :href="privacyPolicyLink" target="_blank">{{ t('cookieComponent.text2') }}</a>.</p>
         <button @click="acceptCookies">{{ t('cookieComponent.accept') }}</button>
+      </div>
       </div>
     </div>
   </template>
@@ -29,14 +31,15 @@
   </script>
   
   <style scoped>
+
   .cookie-consent {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: rgba(52, 52, 52, 0.431);
+    color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,14 +47,24 @@
   }
   
   .content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    background-color: #333;
+    height: 60vh;
+    width: 50vw;
+    background-color: #ffffff;
     padding: 1rem;
     border-radius: 8px;
   }
+
+  .text-content {
+    width: 30vw;
+  }
   
   .cookie-consent p {
-    margin: 0;
+    margin-bottom: 2vh;
     font-size: 16px;
   }
   
