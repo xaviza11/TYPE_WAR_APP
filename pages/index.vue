@@ -3,7 +3,7 @@
     <div class="components-container">
     <NavBar></NavBar>
     <AutoType></AutoType>
-    <RankingPanel :rankings="rankings" />
+    <RankingPanel v-if="rankings.length > 0" :rankings="rankings" />
     <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
   </div>
   </div>

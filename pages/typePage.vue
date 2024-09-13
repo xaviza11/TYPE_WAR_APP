@@ -1,7 +1,7 @@
 <template>
   <div class="TypePage">
     <div class="components-container">
-    <TypePanel v-if="title" :title="title" :text="text" :language="language" :createdAt="createdAt" />
+    <TypePanel v-if="title" :text_id="text_id" :title="title" :text="text" :language="language" :createdAt="createdAt" />
     <NavBar></NavBar>
     <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
   </div>
@@ -46,6 +46,7 @@ export default defineComponent({
     });
 
     const route = useRoute();
+    const text_id = ref('')
     const title = ref('');
     const text = ref('');
     const language = ref('');
@@ -56,6 +57,7 @@ export default defineComponent({
       const queryId = route.query._id as string;
       const response = await getOneText(queryId);
       if (response.success) {
+        text_id.value = response.data._id
         title.value = response.data.title;
         text.value = response.data.text;
         language.value = response.data.language;
@@ -75,6 +77,7 @@ export default defineComponent({
 
     return {
       title,
+      text_id,
       text,
       language,
       createdAt,

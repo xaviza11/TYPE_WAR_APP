@@ -72,9 +72,7 @@ import { useTranslatePrivacyPolicy } from '../utils/useTranslate/useTranslatePri
 
 const { t } = useTranslatePrivacyPolicy();
 
-const cookiePolicyLink = '/cookie-policy';
 </script>
-
 <style scoped>
 .privacy-policy {
   padding: 1rem;

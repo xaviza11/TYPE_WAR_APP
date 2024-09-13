@@ -63,9 +63,10 @@ export const translations = {
       "stats": "Estadísticas",
       "time": "Tiempo: ",
       "pulsations": "Pulsaciones: ",
-      "totalErros": "Errores totales: ",
+      "totalErrors": "Errores totales: ",
       "pulsationsPerSecond": "Pulsaciones por segundo: ",
-      "errorsPerSecond": "Errores por segundo"
+      "errorsPerSecond": "Errores por segundo",
+      "again": "¡Inténtalo de nuevo!",
     },
     "signinPage": {
       "signin": "Iniciar sesión",
@@ -212,7 +213,8 @@ export const translations = {
       "pulsations": "Keystrokes: ",
       "totalErrors": "Total Errors: ",
       "keystrokesPerSecond": "Keystrokes per Second: ",
-      "errorsPerSecond": "Errors per Second"
+      "errorsPerSecond": "Errors per Second",
+      "again": "Try again!",
     },
     "signinPage": {
       "signin": "Sign in",
@@ -359,7 +361,8 @@ export const translations = {
       "pulsations": "Keystrokes: ",
       "totalErrors": "Total Errors: ",
       "keystrokesPerSecond": "Keystrokes per Second: ",
-      "errorsPerSecond": "Errors per Second"
+      "errorsPerSecond": "Errors per Second",
+      "again": "Try again!",
     },
     "signinPage": {
       "signin": "Sign In",
@@ -506,7 +509,8 @@ export const translations = {
       "pulsations": "Frappes : ",
       "totalErrors": "Erreurs totales : ",
       "keystrokesPerSecond": "Frappes par seconde : ",
-      "errorsPerSecond": "Erreurs par seconde"
+      "errorsPerSecond": "Erreurs par seconde",
+      "again": "Réessayer !",
     },
     "signinPage": {
       "signin": "Connexion",
@@ -653,7 +657,8 @@ export const translations = {
       "pulsations": "Tastate: ",
       "totalErrors": "Errori Totali: ",
       "keystrokesPerSecond": "Tastate per Secondo: ",
-      "errorsPerSecond": "Errori per Secondo"
+      "errorsPerSecond": "Errori per Secondo",
+      "again": "Riprova!",
     },
     "signinPage": {
       "signin": "Accedi",
@@ -800,7 +805,8 @@ export const translations = {
       "pulsations": "Tastendrücke: ",
       "totalErrors": "Gesamtfehler: ",
       "keystrokesPerSecond": "Tastendrücke pro Sekunde: ",
-      "errorsPerSecond": "Fehler pro Sekunde"
+      "errorsPerSecond": "Fehler pro Sekunde",
+      "again": "Erneut versuchen!",
     },
     "signinPage": {
       "signin": "Anmelden",

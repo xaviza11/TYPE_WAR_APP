@@ -160,8 +160,6 @@
 }
 </style>
 
-
-
 <script>
 import { defineComponent, ref, computed } from '@vue/composition-api';
 import Cookies from 'js-cookie';

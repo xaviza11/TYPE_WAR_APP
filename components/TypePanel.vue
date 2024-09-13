@@ -25,7 +25,7 @@
       </div>
     </div>
     <div v-if="isFinish">
-      <FinishTextPanel :seconds="seconds" :pulsations="pulsations" :totalErrors="totalErrors"
+      <FinishTextPanel :text_id="text_id" :seconds="seconds" :pulsations="pulsations" :totalErrors="totalErrors"
         :pulsationsPerSecond="pulsationsPerSecond" />
     </div>
   </div>
@@ -39,6 +39,10 @@ import { useTranslate } from '../utils/useTranslate/useTranslate';
 
 export default defineComponent({
   props: {
+    text_id: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -166,7 +170,7 @@ export default defineComponent({
     });
 
     const pulsationsPerSecond = computed(() => {
-      return seconds.value > 0 ? (pulsations.value / seconds.value).toFixed(2) : '0';
+      return seconds.value > 0 ? Math.floor(pulsations.value / seconds.value) : 0;
     });
 
     const renderText = () => {
