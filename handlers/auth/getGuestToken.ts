@@ -14,7 +14,6 @@ export default async function getGuestToken() {
     const url = `${runtimeConfig.public.apiUrl}/auth/generateGuestToken`
 
     try {
-
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -24,7 +23,7 @@ export default async function getGuestToken() {
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || translateError('An error occurred') };
+            return { success: false, message: translateError(errorData.message) || translateError('An error occurred') };
         }
 
         const data = await response.json();

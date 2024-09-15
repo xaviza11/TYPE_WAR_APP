@@ -36,7 +36,7 @@ export default async function postCreateText(title: string, text: string, type: 
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || translateError('An error occurred')};
+            return { success: false, message: translateError(errorData.message) || translateError('An error occurred')};
         }
 
         const data = await response.json();

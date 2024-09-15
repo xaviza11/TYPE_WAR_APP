@@ -26,7 +26,7 @@ export default async function postRenovateSessionToken(userToken: string, name: 
 
         if (!response.ok) {
             const errorData = await response.json();
-            return { success: false, message: errorData.message || translateError('An error occurred') };
+            return { success: false, message: translateError(errorData.message) || translateError('An error occurred') };
         }
 
         const data = await response.json();

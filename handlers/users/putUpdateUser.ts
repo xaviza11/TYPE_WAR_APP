@@ -11,29 +11,30 @@ import { useRuntimeConfig, useRouter } from 'nuxt/app';
 import Cookies from 'js-cookie'
 import { useTranslateErrors } from '../../utils/useTranslate/useTranslateErrors';
 
-export default async function postRegister(email: string, password: string, name: string) {
+export default async function putUpdateUser(password: string, newName: string, newPassword: string, newEmail: string) {
     try {
 
         const {translateError} = useTranslateErrors()
-        const runtimeConfig = useRuntimeConfig()
-        const url = `${runtimeConfig.public.apiUrl}/users`
 
-        const isValidEmail = IS_VALID_EMAIL(email)
+        const token = Cookies.get('userToken')
+        const name = Cookies.get('userName')
+        if(!name) return {success: false, message: translateError('An error occurred') }
+
+        const runtimeConfig = useRuntimeConfig()
+        const url = `${runtimeConfig.public.apiUrl}/users/update`
+
         const isValidPassword = IS_VALID_PASSWORD(password)
         const isValidName = IS_VALID_NAME(name)
-        console.log(isValidEmail, 'aquiii', email)
-        if (!isValidEmail) return { success: false, message: translateError('invalid email') }
         if (!isValidPassword) return { success: false, message: translateError('invalid password') }
         if (!isValidName) return { success: false, message: translateError('invalid email') }
-        const guestToken = Cookies.get('guestToken')
 
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${guestToken}`
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ email, password, name }),
+            body: JSON.stringify({ user: {name, password}, updateData: {name: newName, email: newEmail, password: newPassword} }),
         });
 
         if (!response.ok) {
