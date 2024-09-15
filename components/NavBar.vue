@@ -138,6 +138,7 @@ export default defineComponent({
 @media screen and (orientation: portrait) {
   .navbar {
     width: 70vw;
+    z-index: 1000;
   }
 }
 

@@ -121,7 +121,7 @@ export default defineComponent({
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 100;
   padding: 2rem;
   border-radius: 10px;
   width: 80vw;

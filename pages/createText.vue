@@ -55,6 +55,7 @@ import Alert from '../components/Alert.vue';
 import postCreateText from '../handlers/texts/postCreateText';
 import NavBar from '../components/NavBar.vue'
 import { useTranslate } from '../utils/useTranslate/useTranslate';
+import { useTranslateSuccess } from '../utils/useTranslate/useTranslateSuccess';
 import Cookies from 'js-cookie';
 
 export default defineComponent({
@@ -65,6 +66,7 @@ export default defineComponent({
   setup() {
     const userType = Cookies.get('userType')
     const { t } = useTranslate()
+    const { translateSuccess } = useTranslateSuccess();
     const title = ref('')
     const text = ref('');
     const type = ref('text');
@@ -72,18 +74,14 @@ export default defineComponent({
     const errorMessage = ref('');
 
     const handleCreateText = async () => {
-      try {
         const response = await postCreateText(title.value, text.value, type.value, language.value);
 
         if (response.success) {
-          alert('Text created successfully');
+          errorMessage.value = translateSuccess('text created')
           resetForm();
         } else {
           errorMessage.value = response.message;
         }
-      } catch (error: any) {
-        errorMessage.value = 'An unexpected error occurred.';
-      }
     };
 
     const resetForm = () => {
@@ -120,6 +118,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .create-text {
@@ -174,5 +173,15 @@ export default defineComponent({
 
 .submit-button:hover {
   background-color: #4caf50;
+}
+
+.access-denied {
+  background-color: white;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  width: 40vw;
 }
 </style>

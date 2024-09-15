@@ -1,47 +1,30 @@
 <template>
-   <div class="overlay">
-      <div class="alert">
-    {{ translatedMessage }}
-    <button @click="dismissAlert">{{ t('alert.ok') }}</button>
+  <div class="overlay">
+    <div class="alert">
+      {{ message }} 
+      <button @click="dismissAlert">OK</button> 
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, computed } from 'vue';
-import { useTranslate } from '../utils/useTranslate/useTranslate';
-import { useTranslateErrors } from '../utils/useTranslate/useTranslateErrors';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Alert',
   props: {
     message: {
-      type: String as any,
-      required: true,
+      type: String,
+      required: true, 
     },
   },
   setup(props, { emit }) {
-    const { t } = useTranslate(); 
-    const { translateError } = useTranslateErrors();
-
-    const translatedMessage = computed(() => {
-      return translateError(props.message);
-    });
-
     const dismissAlert = () => {
       emit('close'); 
     };
 
-    onMounted(() => {
-      setTimeout(() => {
-        dismissAlert();
-      }, 5000); 
-    });
-
     return {
-      t,
       dismissAlert,
-      translatedMessage,
     };
   },
 });
@@ -66,8 +49,8 @@ export default defineComponent({
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(5, 5, 5, 0.667);
-  height: 50vh;
-  width: 100%;
+  height: 30vh;
+  width: vw;
   max-width: 500px; 
   text-align: center;
   color: black;
@@ -75,18 +58,6 @@ export default defineComponent({
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
-
-.alert h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.alert p {
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  color: #666;
 }
 
 .alert button {

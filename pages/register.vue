@@ -50,6 +50,7 @@ import postRegister from '../handlers/users/postRegister';
 import Alert from '../components/Alert.vue';
 import { useTranslate } from '../utils/useTranslate/useTranslate';
 import { useHead } from '@unhead/vue';
+import Cookies from 'js-cookie';
 
 export default defineComponent({
   name: 'Register',
@@ -79,10 +80,14 @@ export default defineComponent({
     const errorMessage = ref('');
 
     const handleRegister = async () => {
-      const response = await postRegister(name.value, email.value, password.value);
+      const response = await postRegister(email.value, password.value, name.value, );
 
       if (response.success) {
-        window.location.href = '/signin';
+        Cookies.set('userToken', response.data.access_token, {expires: 7}); 
+        Cookies.set('sessionExpirationDate', response.data.expirationDate, {expires: 7})
+        Cookies.set('userName', response.data.name, {expires: 7})
+        Cookies.set('userType', response.data.type, {expires: 7})
+        window.location.href = '/';
       } else {
         errorMessage.value = response.message;
       }

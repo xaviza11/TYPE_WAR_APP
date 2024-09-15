@@ -28,6 +28,7 @@
       <FinishTextPanel :text_id="text_id" :seconds="seconds" :pulsations="pulsations" :totalErrors="totalErrors"
         :pulsationsPerSecond="pulsationsPerSecond" />
     </div>
+    <Alert v-if="errorMessage" :message="errorMessage" @close="clearErrorMessage" />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue';
 import Cookies from 'js-cookie';
 import FinishTextPanel from './FinishTextPanel.vue';
 import { useTranslate } from '../utils/useTranslate/useTranslate';
+import Alert from './Alert.vue';
 
 export default defineComponent({
   props: {
@@ -74,6 +76,7 @@ export default defineComponent({
     const totalErrors = ref(0);
     const isFinish = ref(false);
     let intervalId: number | null = null;
+    const errorMessage = ref('');
 
     const mood: string = Cookies.get('mode') || 'normal';
     const visibleLength = 20;
@@ -198,6 +201,11 @@ export default defineComponent({
       return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
     });
 
+    
+    const clearErrorMessage = () => {
+      errorMessage.value = '';
+    };
+
     return {
       seconds,
       pulsations,
@@ -213,6 +221,8 @@ export default defineComponent({
       title: props.title,
       formattedCreatedAt,
       isFinish,
+      errorMessage,
+      clearErrorMessage,
       t
     };
   }
