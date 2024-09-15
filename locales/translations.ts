@@ -1,5 +1,17 @@
 export const translations = {
   "es-ES": {
+    "settings": {
+      "updateUser": "Actualizar Usuario",
+      "newName": "Nuevo Nombre",
+      "newEmail": "Nuevo Correo Electrónico",
+      "newPassword": "Nueva Contraseña",
+      "repeatPassword": "Repetir Contraseña",
+      "currentPassword": "Contraseña Actual",
+      "deleteUser": "Eliminar Usuario",
+      "deletePermanent": "Esta acción borra las estadísticas de forma permanente",
+      "resetStats": "Reiniciar Estadísticas",
+      "resetPermanent": "Esta acción elimina las estadísticas de forma permanente"
+    },
     "navbar": {
       "language": "Idioma: ",
       "mode": "Modo: ",
@@ -148,6 +160,18 @@ export const translations = {
 
 
   "en-UK": {
+    "settings": {
+      "updateUser": "Update User",
+      "newName": "New Name",
+      "newEmail": "New Email",
+      "newPassword": "New Password",
+      "repeatPassword": "Repeat Password",
+      "currentPassword": "Current Password",
+      "deleteUser": "Delete User",
+      "deletePermanent": "This action permanently deletes the statistics",
+      "resetStats": "Reset Statistics",
+      "resetPermanent": "This action permanently deletes the statistics"
+    },
     "navbar": {
       "language": "Language: ",
       "mode": "Mode: ",
@@ -296,6 +320,18 @@ export const translations = {
 
 
   "en-US": {
+    "settings": {
+      "updateUser": "Update User",
+      "newName": "New Name",
+      "newEmail": "New Email",
+      "newPassword": "New Password",
+      "repeatPassword": "Repeat Password",
+      "currentPassword": "Current Password",
+      "deleteUser": "Delete User",
+      "deletePermanent": "This action permanently deletes the statistics",
+      "resetStats": "Reset Statistics",
+      "resetPermanent": "This action permanently deletes the statistics"
+    },
     "navbar": {
       "language": "Language: ",
       "mode": "Mode: ",
@@ -444,6 +480,18 @@ export const translations = {
 
 
   "fr-FR": {
+    "settings": {
+      "updateUser": "Mettre à jour l'utilisateur",
+      "newName": "Nouveau nom",
+      "newEmail": "Nouveau courriel",
+      "newPassword": "Nouveau mot de passe",
+      "repeatPassword": "Répéter le mot de passe",
+      "currentPassword": "Mot de passe actuel",
+      "deleteUser": "Supprimer l'utilisateur",
+      "deletePermanent": "Cette action supprime définitivement les statistiques",
+      "resetStats": "Réinitialiser les statistiques",
+      "resetPermanent": "Cette action supprime définitivement les statistiques"
+    },
     "navbar": {
       "language": "Langue : ",
       "mode": "Mode : ",
@@ -592,6 +640,18 @@ export const translations = {
 
 
   "it-IT": {
+    "settings": {
+      "updateUser": "Aggiorna Utente",
+      "newName": "Nuovo Nome",
+      "newEmail": "Nuovo Email",
+      "newPassword": "Nuova Password",
+      "repeatPassword": "Ripeti Password",
+      "currentPassword": "Password Corrente",
+      "deleteUser": "Elimina Utente",
+      "deletePermanent": "Questa azione elimina permanentemente le statistiche",
+      "resetStats": "Reimposta Statistiche",
+      "resetPermanent": "Questa azione elimina permanentemente le statistiche"
+    },
     "navbar": {
       "language": "Lingua: ",
       "mode": "Modalità: ",
@@ -740,6 +800,18 @@ export const translations = {
 
 
   "de-DE": {
+    "settings": {
+      "updateUser": "Benutzer aktualisieren",
+      "newName": "Neuer Name",
+      "newEmail": "Neue E-Mail",
+      "newPassword": "Neues Passwort",
+      "repeatPassword": "Passwort wiederholen",
+      "currentPassword": "Aktuelles Passwort",
+      "deleteUser": "Benutzer löschen",
+      "deletePermanent": "Diese Aktion löscht die Statistiken dauerhaft",
+      "resetStats": "Statistiken zurücksetzen",
+      "resetPermanent": "Diese Aktion löscht die Statistiken dauerhaft"
+    },
     "navbar": {
       "language": "Sprache: ",
       "mode": "Modus: ",
