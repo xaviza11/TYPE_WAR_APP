@@ -1,5 +1,5 @@
 <template>
-  <div class="update-user-container">
+  <div v-if="userToken" class="update-user-container">
     <form @submit.prevent="handleUpdate" class="update-user-form">
       <h3 class="title">{{ t('settings.updateUser') }}</h3>
       <div class="input-group">
@@ -48,6 +48,10 @@
     </div>
     <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
   </div>
+  <div v-else>
+    <p class="message">{{ t('createTextPage.accessDenied') }}</p>
+    <router-link to="/" class="link">{{ t('createTextPage.return') }}</router-link>
+  </div>
 </template>
 
 <script setup>
@@ -67,6 +71,7 @@ const router = useRouter()
 const errorMessage = ref('')
 const {t} = useTranslate()
 const { translateSuccess } = useTranslateSuccess();
+const userToken = Cookies.get('userToken')
 
 const form = ref({
   newName: '',

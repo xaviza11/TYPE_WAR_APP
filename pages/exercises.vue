@@ -91,11 +91,12 @@ export default defineComponent({
   align-items: center;
   background-color: black;
   height: 100vh;
+  overflow: hidden; 
 }
 
 .content-container {
   background-color: white;
-  height: 90vh;
+  max-height: 90vh; 
   width: 30vw;
   display: flex;
   flex-direction: column;
@@ -109,11 +110,28 @@ export default defineComponent({
   color: #333; 
   background-image: url('../public/images/paperBackGound.png'); 
   background-size: cover;
+  overflow-y: auto; 
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  flex-grow: 1; 
+}
+
+li {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 @media (orientation: portrait) {
   .content-container {
     width: 70vw;
+    max-height: 80vh; 
   }
 }
 
@@ -121,7 +139,6 @@ export default defineComponent({
   font-family: 'Georgia', serif; 
   text-transform: uppercase;
   padding-bottom: 0.5rem;
-  cursor: pointer
-}
-
+  cursor: pointer;
+  }
 </style>

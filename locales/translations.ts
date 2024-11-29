@@ -151,6 +151,9 @@ export const translations = {
       "title": "404 - Página no encontrada",
       "text": "Lo sentimos, la página que estás buscando no existe.",
       "return": "Volver al inicio"
+    },
+      "orientationWarning": {
+        "text": "Por favor, gira tu dispositivo para usar esta página correctamente."
     }
   },
 
@@ -312,6 +315,9 @@ export const translations = {
       "text": "Sorry, the page you are looking for does not exist.",
       "return": "Return to homepage"
     },
+    "orientationWarning": {
+      "text": "Please rotate your device to use this page properly."
+    }
   },
 
 
@@ -472,6 +478,9 @@ export const translations = {
       "text": "Sorry, the page you're looking for doesn't exist.",
       "return": "Go back to homepage"
     },
+    "orientationWarning": {
+      "text": "Please rotate your device to use this page properly."
+    }
   },
 
 
@@ -631,6 +640,9 @@ export const translations = {
       "title": "404 - Page non trouvée",
       "text": "Désolé, la page que vous cherchez n'existe pas.",
       "return": "Retour à l'accueil"
+    },
+    "orientationWarning": {
+      "text": "Veuillez tourner votre appareil pour utiliser cette page correctement."
     }
   },
 
@@ -792,6 +804,9 @@ export const translations = {
       "text": "Spiacenti, la pagina che stai cercando non esiste.",
       "return": "Torna alla homepage"
     },
+    "orientationWarning": {
+      "text": "Ruota il dispositivo per utilizzare correttamente questa pagina."
+    }
   },
 
 
@@ -953,6 +968,9 @@ export const translations = {
       "return": "Zurück zur Startseite",
       "closeSession": "Sitzung beenden"
     },
+    "orientationWarning": {
+      "text": "Bitte drehen Sie Ihr Gerät, um diese Seite richtig zu verwenden."
+    }
   }
 }
 

@@ -3,16 +3,16 @@
     <h2 v-html="renderText()"></h2>
     <table class="stats-table">
       <tr>
-        <td>{{ t('autoType.seconds') }}</td>
-        <td>{{ seconds }}</td>
-        <td>{{ t('autoType.pulsations') }}</td>
-        <td>{{ pulsations }}</td>
+        <td class="seconds-text">{{ t('autoType.seconds') }}</td>
+        <td class="seconds">{{ seconds }}</td>
+        <td class="pulsations-text">{{ t('autoType.pulsations') }}</td>
+        <td class="pulsations">{{ pulsations }}</td>
       </tr>
       <tr>
-        <td>{{ t('autoType.totalErrors') }}</td>
-        <td>{{ totalErrors }}</td>
-        <td>{{ t('autoType.pps') }}</td>
-        <td>{{ pps }}</td>
+        <td class="error-text">{{ t('autoType.totalErrors') }}</td>
+        <td class="error">{{ totalErrors }}</td>
+        <td class="pps-text">{{ t('autoType.pps') }}</td>
+        <td class="pps">{{ pps }}</td>
       </tr>
     </table>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="texts-page">
     <div v-if="exerciseList.length === 0">
-      {{ t('textsPage.loadingExercises') }}
+      <h3>{{ t('textsPage.loadingExercises') }}</h3>
     </div>
     <div class="content-container" v-else>
       <ul>

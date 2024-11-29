@@ -1,5 +1,6 @@
 <template>
   <div class="signin-container">
+
     <form @submit.prevent="handleSignIn" class="signin-form">
       <h2 class="title">{{ t('signinPage.signin') }}</h2>
 
@@ -28,7 +29,6 @@
         <router-link to="/" class="link">{{ t('signinPage.home') }}</router-link>
         <router-link to="/register" class="link">{{ t('signinPage.register') }}</router-link>
       </div>
-      
     </form>
 
     <Alert v-if="errorMessage" :message="errorMessage" :onClose="clearErrorMessage" />
@@ -42,6 +42,7 @@ import Cookies from 'js-cookie';
 import Alert from '../components/Alert.vue'; 
 import { useTranslate } from '../utils/useTranslate/useTranslate';
 import {useHead} from '@unhead/vue'
+import Navbar from '../components/NavBar.vue'
 
 export default defineComponent({
   name: 'SignIn',
@@ -98,7 +99,7 @@ export default defineComponent({
       handleSignIn,
       errorMessage,
       clearErrorMessage,
-      t
+      t,
     };
   }
 });

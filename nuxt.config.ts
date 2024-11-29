@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: [{ src: '~/plugins/guestToken', mode: 'client'},
     { src: '~/plugins/sessionToken', mode: 'client'},
-    {src: '~/plugins/cookieConsent', mode: 'client' }
+    {src: '~/plugins/cookieConsent', mode: 'client' },
+    {src: '~/plugins/orientationWarning', mode: 'client'}
   ],
   runtimeConfig: {
     public: {
